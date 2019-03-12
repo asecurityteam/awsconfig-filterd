@@ -23,7 +23,13 @@
 <a id="markdown-overview" name="overview"></a>
 ## Overview
 
-AWS Config provides a detailed view of the configuration of AWS resources, potentially across multiple AWS accounts, and can provide a stream of configuration change events via an SNS topic which publishes to SQS. However, much of the data produced by Config may be unnecessary for many use cases. The awsconfig-filterd service provides an API which accepts the SQS payload, applies filters to remove configuration change events based on resource type, and outputs the filtered events to a queue, where they may be consumed by other services which are only interested in a subset of the AWS Config data.
+AWS Config provides a detailed view of the configuration of AWS resources, potentially across
+multiple AWS accounts, and can provide a stream of configuration change events via an SNS topic
+which publishes to SQS. However, much of the data produced by Config may be unnecessary for many
+use cases. The awsconfig-filterd service provides an API which accepts the SQS payload, applies
+filters to remove configuration change events based on resource type, and POSTs the filtered
+events to an HTTP endpoint, where they may be consumed by other services which are only
+interested in a subset of the AWS Config data.
 
 <a id="markdown-quick-start" name="quick-start"></a>
 ## Quick Start
