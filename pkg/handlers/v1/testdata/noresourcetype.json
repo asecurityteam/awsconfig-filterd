@@ -1,0 +1,195 @@
+{
+    "Configurationitemdiff": {
+        "changedProperties": {},
+        "changeType": "CREATE"
+    },
+    "configurationItem": {
+        "relatedEvents": [],
+        "relationships": [
+            {
+                "resourceId": "eni-00123456789abcdef",
+                "resourceName": null,
+                "resourceType": "AWS::EC2::NetworkInterface",
+                "name": "Contains NetworkInterface"
+            },
+            {
+                "resourceId": "sg-00123456789abcdef",
+                "resourceName": null,
+                "resourceType": "AWS::EC2::SecurityGroup",
+                "name": "Is associated with SecurityGroup"
+            },
+            {
+                "resourceId": "subnet-00abcdef",
+                "resourceName": null,
+                "resourceType": "AWS::EC2::Subnet",
+                "name": "Is contained in Subnet"
+            },
+            {
+                "resourceId": "vol-00123456789abcdef",
+                "resourceName": null,
+                "resourceType": "AWS::EC2::Volume",
+                "name": "Is attached to Volume"
+            },
+            {
+                "resourceId": "vpc-00abcdef",
+                "resourceName": null,
+                "resourceType": "AWS::EC2::VPC",
+                "name": "Is contained in Vpc"
+            }
+        ],
+        "configuration": {
+            "amiLaunchIndex": 0,
+            "imageId": "ami-00123456789abcdef",
+            "instanceId": "i-00123456789abcdef",
+            "instanceType": "t2.micro",
+            "kernelId": null,
+            "keyName": "keyName",
+            "launchTime": "2019-02-22T20:30:10.000Z",
+            "monitoring": {
+                "state": "disabled"
+            },
+            "placement": {
+                "availabilityZone": "us-west-2a",
+                "affinity": null,
+                "groupName": "",
+                "partitionNumber": null,
+                "hostId": null,
+                "tenancy": "default",
+                "spreadDomain": null
+            },
+            "platform": null,
+            "privateDnsName": "ip-10-2-3-4.us-west-2.compute.internal",
+            "privateIpAddress": "10.2.3.4",
+            "productCodes": [],
+            "publicDnsName": "ec2-1-2-3-4.us-west-2.compute.amazonaws.com",
+            "publicIpAddress": "1.2.3.4",
+            "ramdiskId": null,
+            "state": {
+                "code": 16,
+                "name": "running"
+            },
+            "stateTransitionReason": "",
+            "subnetId": "subnet-00abcdef",
+            "vpcId": "vpc-00abcdef",
+            "architecture": "x86_64",
+            "blockDeviceMappings": [
+                {
+                    "deviceName": "/dev/sda1",
+                    "ebs": {
+                        "attachTime": "2019-02-22T20:30:11.000Z",
+                        "deleteOnTermination": true,
+                        "status": "attached",
+                        "volumeId": "vol-00123456789abcdef"
+                    }
+                }
+            ],
+            "clientToken": "",
+            "ebsOptimized": false,
+            "enaSupport": true,
+            "hypervisor": "xen",
+            "iamInstanceProfile": null,
+            "instanceLifecycle": null,
+            "elasticGpuAssociations": [],
+            "elasticInferenceAcceleratorAssociations": [],
+            "networkInterfaces": [
+                {
+                    "association": {
+                        "ipOwnerId": "amazon",
+                        "publicDnsName": "ec2-1-2-3-4.us-west-2.compute.amazonaws.com",
+                        "publicIp": "1.2.3.4"
+                    },
+                    "attachment": {
+                        "attachTime": "2019-02-22T20:30:10.000Z",
+                        "attachmentId": "eni-attach-00123456789abcdef",
+                        "deleteOnTermination": true,
+                        "deviceIndex": 0,
+                        "status": "attached"
+                    },
+                    "description": "",
+                    "groups": [
+                        {
+                            "groupName": "launch-wizard-2",
+                            "groupId": "sg-00123456789abcdef"
+                        }
+                    ],
+                    "ipv6Addresses": [],
+                    "macAddress": "00:00:00:00:00:0a",
+                    "networkInterfaceId": "eni-00123456789abcdef",
+                    "ownerId": "123456789999",
+                    "privateDnsName": "ip-10-2-3-4.us-west-2.compute.internal",
+                    "privateIpAddress": "10.2.3.4",
+                    "privateIpAddresses": [
+                        {
+                            "association": {
+                                "ipOwnerId": "amazon",
+                                "publicDnsName": "ec2-1-2-3-4.us-west-2.compute.amazonaws.com",
+                                "publicIp": "1.2.3.4"
+                            },
+                            "primary": true,
+                            "privateDnsName": "ip-10-2-3-4.us-west-2.compute.internal",
+                            "privateIpAddress": "10.2.3.4"
+                        }
+                    ],
+                    "sourceDestCheck": true,
+                    "status": "in-use",
+                    "subnetId": "subnet-00abcdef",
+                    "vpcId": "vpc-00abcdef"
+                }
+            ],
+            "rootDeviceName": "/dev/sda1",
+            "rootDeviceType": "ebs",
+            "securityGroups": [
+                {
+                    "groupName": "launch-wizard-2",
+                    "groupId": "sg-00123456789abcdef"
+                }
+            ],
+            "sourceDestCheck": true,
+            "spotInstanceRequestId": null,
+            "sriovNetSupport": null,
+            "stateReason": null,
+            "tags": [
+                {
+                    "key": "business_unit",
+                    "value": "CISO-Security"
+                },
+                {
+                    "key": "service_name",
+                    "value": "foo-bar"
+                }
+            ],
+            "virtualizationType": "hvm",
+            "cpuOptions": {
+                "coreCount": 1,
+                "threadsPerCore": 1
+            },
+            "capacityReservationId": null,
+            "capacityReservationSpecification": null,
+            "hibernationOptions": {
+                "configured": false
+            },
+            "licenses": []
+        },
+        "supplementaryConfiguration": {},
+        "tags": {
+            "service_name": "foo-bar",
+            "business_unit": "CISO-Security"
+        },
+        "configurationItemVersion": "1.3",
+        "configurationItemCaptureTime": "2019-02-22T20:43:10.208Z",
+        "configurationStateId": 1550868190208,
+        "awsAccountId": "123456789999",
+        "configurationItemStatus": "ResourceDiscovered",
+        "resourceType": "",
+        "resourceId": "i-00123456789abcdef",
+        "resourceName": null,
+        "ARN": "arn:aws:ec2:us-west-2:123456789999:instance/i-00123456789abcdef",
+        "awsRegion": "us-west-2",
+        "availabilityZone": "us-west-2a",
+        "configurationStateMd5Hash": "",
+        "resourceCreationTime": "2019-02-22T20:30:10.000Z"
+    },
+    "notificationCreationTime": "2019-02-22T20:43:11.256Z",
+    "messageType": "ConfigurationItemChangeNotification",
+    "recordVersion": "1.3"
+}
