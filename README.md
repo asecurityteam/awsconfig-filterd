@@ -1,5 +1,5 @@
-<a id="markdown-awsconfig-filterd---a-service-which-filters-aws-config-events" name="awsconfig-filterd---a-service-which-filters-aws-config-events"></a>
-# awsconfig-filterd - A service which filters AWS Config events
+<a id="markdown-awsconfig-filterd---a-lambda-handler-which-filters-aws-config-events" name="awsconfig-filterd---a-lambda-handler-which-filters-aws-config-events"></a>
+# awsconfig-filterd - a lambda handler which filters AWS Config events
 
 *Status: Incubation*
 
@@ -7,7 +7,7 @@
 
 <!-- TOC -->
 
-- [awsconfig-filterd - A service which filters AWS Config events](#awsconfig-filterd---a-service-which-filters-aws-config-events)
+- [awsconfig-filterd - a lambda handler which filters AWS Config events](#awsconfig-filterd---a-lambda-handler-which-filters-aws-config-events)
     - [Overview](#overview)
     - [Quick Start](#quick-start)
     - [Configuration](#configuration)
@@ -26,10 +26,10 @@
 AWS Config provides a detailed view of the configuration of AWS resources, potentially across
 multiple AWS accounts, and can provide a stream of configuration change events via an SNS topic
 which publishes to SQS. However, much of the data produced by Config may be unnecessary for many
-use cases. The awsconfig-filterd service provides an API which accepts the SQS payload, applies
-filters to remove configuration change events based on resource type, and POSTs the filtered
-events to an HTTP endpoint, where they may be consumed by other services which are only
-interested in a subset of the AWS Config data.
+use cases. The awsconfig-filterd service provides a lambda handler which accepts the SNS payload,
+applies filters to remove configuration change events based parameters such as resource type, and
+returns the filtered events. The goal is to provide a stream of events for consumption by other
+services which are only interested in a subset of the AWS Config data.
 
 <a id="markdown-quick-start" name="quick-start"></a>
 ## Quick Start
