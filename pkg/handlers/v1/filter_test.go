@@ -25,9 +25,10 @@ func dataFileToString(t *testing.T, filename string) string {
 	return string(data)
 }
 func TestHandle(t *testing.T) {
-	validEvent := dataFileToString(t, "awsconfigpayload.json")
-	invalidResourceType := dataFileToString(t, "invalidresourcetype.json")
-	noResourceType := dataFileToString(t, "noresourcetype.json")
+	validEvent := dataFileToString(t, "config.valid.json")
+	invalidResourceType := dataFileToString(t, "config.invalid-resourceType.json")
+	noResourceType := dataFileToString(t, "config.no-resourceType.json")
+	invalidMessageType := dataFileToString(t, "config.invalid-messageType.json")
 
 	tc := []struct {
 		name         string
@@ -46,7 +47,7 @@ func TestHandle(t *testing.T) {
 			filterOK:     true,
 		},
 		{
-			name:         "no valid resource type",
+			name:         "invalid resource type",
 			in:           invalidResourceType,
 			expectedOut:  "",
 			expectedErr:  nil,
@@ -54,10 +55,26 @@ func TestHandle(t *testing.T) {
 			filterOK:     false,
 		},
 		{
-			name:         "no valid resource type",
+			name:         "no resource type",
 			in:           noResourceType,
 			expectedOut:  "",
 			expectedErr:  domain.ErrInvalidInput{Reason: "empty resource type"},
+			filterCalled: false,
+			filterOK:     false,
+		},
+		{
+			name:         "invalid message type",
+			in:           invalidMessageType,
+			expectedOut:  "",
+			expectedErr:  nil,
+			filterCalled: false,
+			filterOK:     false,
+		},
+		{
+			name:         "no message",
+			in:           "",
+			expectedOut:  "",
+			expectedErr:  nil,
 			filterCalled: false,
 			filterOK:     false,
 		},

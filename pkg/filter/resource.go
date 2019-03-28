@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/asecurityteam/awsconfig-filterd/pkg/domain"
-	config "github.com/aws/aws-sdk-go/service/configservice"
+	"github.com/aws/aws-sdk-go/service/configservice"
 )
 
 // ResourceTypeFiltererConfig defines the configuration options for a ResourceTypeFilterer.
@@ -26,9 +26,9 @@ type ResourceTypeFiltererComponent struct{}
 func (*ResourceTypeFiltererComponent) Settings() *ResourceTypeFiltererConfig {
 	return &ResourceTypeFiltererConfig{
 		ValidResourceTypes: []string{
-			config.ResourceTypeAwsEc2Instance,
-			config.ResourceTypeAwsElasticLoadBalancingLoadBalancer,
-			config.ResourceTypeAwsElasticLoadBalancingV2LoadBalancer,
+			configservice.ResourceTypeAwsEc2Instance,
+			configservice.ResourceTypeAwsElasticLoadBalancingLoadBalancer,
+			configservice.ResourceTypeAwsElasticLoadBalancingV2LoadBalancer,
 		},
 	}
 }
