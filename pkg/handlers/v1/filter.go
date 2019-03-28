@@ -8,6 +8,7 @@ import (
 
 	"github.com/asecurityteam/awsconfig-filterd/pkg/domain"
 	"github.com/asecurityteam/awsconfig-filterd/pkg/logs"
+	"github.com/aws/aws-sdk-go/service/configservice"
 )
 
 // ConfigNotification is the basic structure of all incoming AWS Config SNS events
@@ -29,6 +30,7 @@ type ConfigNotification struct {
 // ConfigEvent represents a single AWS Config Configuration Item.
 type ConfigEvent struct {
 	ConfigurationItem domain.ConfigurationItem `json:"configurationItem"`
+	MessageType       string                   `json:"messageType"`
 }
 
 // ConfigFilterHandler applies a filter to AWS Config events.
@@ -44,10 +46,18 @@ func (h *ConfigFilterHandler) Handle(ctx context.Context, in ConfigNotification)
 	stater := h.StatFn(ctx)
 
 	var event ConfigEvent
+	if in.Message == "" {
+		return ConfigNotification{}, nil
+	}
+
 	e := json.Unmarshal([]byte(in.Message), &event)
 	if e != nil {
 		logger.Error(logs.InvalidInput{Reason: e.Error()})
 		return ConfigNotification{}, e
+	}
+
+	if event.MessageType != configservice.MessageTypeConfigurationItemChangeNotification {
+		return ConfigNotification{}, nil
 	}
 
 	if event.ConfigurationItem.ResourceType == "" {
