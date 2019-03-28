@@ -63,8 +63,10 @@ func (h *ConfigFilterHandler) Handle(ctx context.Context, in ConfigNotification)
 		return ConfigNotification{}, nil
 	}
 
-	if ts, err := time.Parse(time.RFC3339Nano, in.Timestamp); err == nil {
-		stater.Timing("event.awsconfig.filter.event.delay", time.Since(ts))
+	if in.Timestamp != "" {
+		if ts, err := time.Parse(time.RFC3339Nano, in.Timestamp); err == nil {
+			stater.Timing("event.awsconfig.filter.event.delay", time.Since(ts))
+		}
 	}
 	stater.Count("event.awsconfig.filter.accepted", 1)
 	in.ProcessedTimestamp = time.Now().Format(time.RFC3339Nano)
