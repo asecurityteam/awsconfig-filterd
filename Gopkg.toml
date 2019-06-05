@@ -9,8 +9,17 @@
   branch = "master"
 
 [[constraint]]
+  name = "github.com/asecurityteam/components"
+  branch = "master"
+
+[[override]]
+  name = "github.com/Jeffail/benthos"
+  # version = "^2.2.0"
+  revision = "bdd5e353ea72a5805e80be84c3ebafa9acba2465"
+
+[[constraint]]
   name = "github.com/asecurityteam/serverfull"
-  version = "0.1.0"
+  version = "^0.2.0"
 
 [[constraint]]
   name = "github.com/asecurityteam/runhttp"
