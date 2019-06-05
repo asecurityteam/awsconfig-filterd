@@ -1,6 +1,8 @@
 <a id="markdown-AWS Config Filterd" name="AWS Config Filterd"></a>
 # AWS Config Filterd
-A lambda handler which receives AWS Config changes, applies filters, and returns the Config changes which match the filters.
+
+A Lambda that filters the Config change stream so that only a selection of
+relevant resource types continue onto the next stream.
 
 <https://github.com/asecurityteam/awsconfig-filterd>
 
@@ -51,24 +53,25 @@ The app should now be running on port 8080.
 <a id="markdown-configuration" name="configuration"></a>
 ## Configuration
 
-Images of this project are built, and hosted on [DockerHub](https://cloud.docker.com/u/asecurityteam/repository/docker/asecurityteam/awsconfig-filterd).
+Images of this project are built, and hosted on [DockerHub](https://cloud.docker.com/u/asecurityteam/repository/docker/asecurityteam/awsconfig-filterd). The system is configured using environment variables. The following are all of the configuration options for the system:
 
-This code functions as a stand-alone Lambda function, and can be deployed to AWS Lambda directly.
-To run in the AWS Lambda environment, create a new Go project, import this project as a dependency, and run the lambda
-using the aws-lambda-sdk:
-
-```go
-func main() {
-    resourceFiltererComponent := &filter.ResourceTypeFiltererComponent{}
-    resourceTypeFilterer := new(filter.ResourceTypeFilterer)
-    _ = settings.NewComponent(ctx, source, resourceFiltererComponent, resourceTypeFilterer)
-    configFilterer := &v1.ConfigFilterHandler{
-        LogFn:          <LOGGER_PROVIDER>,
-        StatFn:         <STATS_PROVIDER>,
-        ConfigFilterer: resourceTypeFilterer,
-    }
-  lambda.Start(configFilterer.Handle)
-}
+```bash
+# (bool) Use the Lambda SDK to start the system.
+AWSCONFIGFILTERD_LAMBDAMODE="false"
+# ([]string) List of enabled filters.
+AWSCONFIGFILTERD_FILTER_ENABLED="resourcetype"
+# ([]string) List of AWS resource types allowed to pass through.
+AWSCONFIGFILTERD_FILTER_RESOURCETYPE_ALLOWED="AWS::EC2::Instance AWS::ElasticLoadBalancing::LoadBalancer AWS::ElasticLoadBalancingV2::LoadBalancer"
+# (string)
+AWSCONFIGFILTERD_PRODUCER_TYPE="BENTHOS"
+# (string) The YAML or JSON text of a Benthos configuration.
+AWSCONFIGFILTERD_PRODUCER_BENTHOS_YAML=""
+# (string) The URL to POST.
+AWSCONFIGFILTERD_PRODUCER_POST_ENDPOINT=""
+# (string) The type of HTTP client. Choices are SMART and DEFAULT.
+AWSCONFIGFILTERD_PRODUCER_POST_HTTPCLIENT_TYPE="DEFAULT"
+# (string) The full OpenAPI specification with transportd extensions.
+AWSCONFIGFILTERD_PRODUCER_POST_HTTPCLIENT_SMART_OPENAPI=""
 ```
 
 For those who do not have access to AWS Lambda, you can run your own configuration by composing this
