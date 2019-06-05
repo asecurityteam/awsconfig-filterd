@@ -33,44 +33,46 @@ type ConfigEvent struct {
 	MessageType       string                   `json:"messageType"`
 }
 
-// ConfigFilterHandler applies a filter to AWS Config events.
-type ConfigFilterHandler struct {
+// ConfigFilter applies a filter to AWS Config events.
+type ConfigFilter struct {
+	Producer       domain.Producer
 	ConfigFilterer domain.ConfigFilterer
 	LogFn          domain.LogFn
 	StatFn         domain.StatFn
 }
 
 // Handle accepts Config events, applies a filter, and returns the events that match.
-func (h *ConfigFilterHandler) Handle(ctx context.Context, in ConfigNotification) (ConfigNotification, error) {
+func (h *ConfigFilter) Handle(ctx context.Context, in ConfigNotification) error {
 	logger := h.LogFn(ctx)
 	stater := h.StatFn(ctx)
-
 	var event ConfigEvent
 	if in.Message == "" {
-		return ConfigNotification{}, nil
+		return nil
 	}
 
-	e := json.Unmarshal([]byte(in.Message), &event)
-	if e != nil {
+	if e := json.Unmarshal([]byte(in.Message), &event); e != nil {
 		logger.Error(logs.InvalidInput{Reason: e.Error()})
-		return ConfigNotification{}, e
+		return e
 	}
 
 	if event.MessageType != configservice.MessageTypeConfigurationItemChangeNotification {
-		return ConfigNotification{}, nil
+		return nil
 	}
 
 	if event.ConfigurationItem.ResourceType == "" {
-		e = domain.ErrInvalidInput{Reason: "empty resource type"}
+		e := domain.ErrInvalidInput{Reason: "empty resource type"}
 		logger.Error(logs.InvalidInput{Reason: e.Error()})
-		return ConfigNotification{}, e
+		return e
 	}
-	stater.Count("event.awsconfig.filter.resource_type", 1,
-		fmt.Sprintf("type:%s", event.ConfigurationItem.ResourceType))
+	stater.Count(
+		"event.awsconfig.filter.resource_type",
+		1,
+		fmt.Sprintf("type:%s", event.ConfigurationItem.ResourceType),
+	)
 
 	if ok := h.ConfigFilterer.FilterConfig(event.ConfigurationItem); !ok {
 		stater.Count("event.awsconfig.filter.discarded", 1)
-		return ConfigNotification{}, nil
+		return nil
 	}
 
 	if ts, err := time.Parse(time.RFC3339Nano, in.Timestamp); err == nil {
@@ -78,5 +80,6 @@ func (h *ConfigFilterHandler) Handle(ctx context.Context, in ConfigNotification)
 	}
 	stater.Count("event.awsconfig.filter.accepted", 1)
 	in.ProcessedTimestamp = time.Now().Format(time.RFC3339Nano)
-	return in, nil
+	_, err := h.Producer.Produce(ctx, in)
+	return err
 }
