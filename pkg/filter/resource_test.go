@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestResourceTypeFilterer(t *testing.T) {
+func TestResourceType(t *testing.T) {
 	tc := []struct {
 		name     string
 		in       domain.ConfigurationItem
@@ -48,28 +48,27 @@ func TestResourceTypeFilterer(t *testing.T) {
 		},
 	}
 
-	resourceTypeFiltererComponent := &ResourceTypeFiltererComponent{}
-	resourceTypeFilterer, err := resourceTypeFiltererComponent.New(context.Background(), resourceTypeFiltererComponent.Settings())
+	cmp := NewResourceTypeComponent()
+	f, err := cmp.New(context.Background(), cmp.Settings())
 	require.Nil(t, err)
 
 	for _, tt := range tc {
 		t.Run(tt.name, func(t *testing.T) {
-
-			filter := resourceTypeFilterer
-			actual := filter.FilterConfig(tt.in)
+			actual := f.FilterConfig(tt.in)
 			require.Equal(t, tt.expected, actual)
 		})
 	}
 }
 
 func TestResourceTypeFiltererNoValidTypes(t *testing.T) {
-	filter := &ResourceTypeFilterer{}
-	out := filter.FilterConfig(domain.ConfigurationItem{
-		ResourceType: config.ResourceTypeAwsEc2Instance})
-	require.Equal(t, false, out)
+	f := &ResourceType{}
+	out := f.FilterConfig(domain.ConfigurationItem{
+		ResourceType: config.ResourceTypeAwsEc2Instance,
+	})
+	require.False(t, out)
 }
 
 func TestName(t *testing.T) {
-	resourceTypeFiltererConfig := ResourceTypeFiltererConfig{}
-	require.Equal(t, "ResourceTypeFilter", resourceTypeFiltererConfig.Name())
+	conf := ResourceTypeConfig{}
+	require.Equal(t, "resourcetype", conf.Name())
 }
