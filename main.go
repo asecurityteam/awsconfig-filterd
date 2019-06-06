@@ -12,36 +12,36 @@ import (
 	"github.com/asecurityteam/settings"
 )
 
-type Config struct {
+type config struct {
 	Filter     *filter.FilterConfig
 	Producer   *components.ProducerConfig
 	LambdaMode bool `description:"Use the Lambda SDK to start the system."`
 }
 
-func (*Config) Name() string {
+func (*config) Name() string {
 	return "awsconfigfilterd"
 }
 
-type Component struct {
+type component struct {
 	Filter   *filter.FilterComponent
 	Producer *components.ProducerComponent
 }
 
-func NewComponent() *Component {
-	return &Component{
+func newComponent() *component {
+	return &component{
 		Filter:   filter.NewFilterComponent(),
 		Producer: components.NewProducerComponent(),
 	}
 }
 
-func (c *Component) Settings() *Config {
-	return &Config{
+func (c *component) Settings() *config {
+	return &config{
 		Filter:   c.Filter.Settings(),
 		Producer: c.Producer.Settings(),
 	}
 }
 
-func (c *Component) New(ctx context.Context, conf *Config) (func(context.Context, settings.Source) error, error) {
+func (c *component) New(ctx context.Context, conf *config) (func(context.Context, settings.Source) error, error) {
 	f, err := c.Filter.New(ctx, conf.Filter)
 	if err != nil {
 		return nil, err
@@ -78,7 +78,7 @@ func main() {
 	}
 	ctx := context.Background()
 	runner := new(func(context.Context, settings.Source) error)
-	cmp := NewComponent()
+	cmp := newComponent()
 	err = settings.NewComponent(ctx, source, cmp, runner)
 	if err != nil {
 		panic(err.Error())
