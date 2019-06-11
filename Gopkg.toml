@@ -12,10 +12,6 @@
   name = "github.com/asecurityteam/components"
   branch = "master"
 
-[[override]]
-  name = "github.com/Jeffail/benthos"
-  version = "^2.2.0"
-
 [[constraint]]
   name = "github.com/asecurityteam/serverfull"
   version = "^0.2.0"
