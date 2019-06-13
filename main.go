@@ -4,6 +4,7 @@ import (
 	"context"
 	"os"
 
+	"github.com/asecurityteam/awsconfig-filterd/pkg/decorators"
 	"github.com/asecurityteam/awsconfig-filterd/pkg/filter"
 	v1 "github.com/asecurityteam/awsconfig-filterd/pkg/handlers/v1"
 	"github.com/asecurityteam/components"
@@ -13,6 +14,7 @@ import (
 )
 
 type config struct {
+	Decorators *decorators.ChainConfig
 	Filter     *filter.FilterConfig
 	Producer   *components.ProducerConfig
 	LambdaMode bool `description:"Use the Lambda SDK to start the system."`
@@ -23,21 +25,24 @@ func (*config) Name() string {
 }
 
 type component struct {
-	Filter   *filter.FilterComponent
-	Producer *components.ProducerComponent
+	Decorators *decorators.ChainComponent
+	Filter     *filter.FilterComponent
+	Producer   *components.ProducerComponent
 }
 
 func newComponent() *component {
 	return &component{
-		Filter:   filter.NewFilterComponent(),
-		Producer: components.NewProducerComponent(),
+		Decorators: decorators.NewChainComponent(),
+		Filter:     filter.NewFilterComponent(),
+		Producer:   components.NewProducerComponent(),
 	}
 }
 
 func (c *component) Settings() *config {
 	return &config{
-		Filter:   c.Filter.Settings(),
-		Producer: c.Producer.Settings(),
+		Decorators: c.Decorators.Settings(),
+		Filter:     c.Filter.Settings(),
+		Producer:   c.Producer.Settings(),
 	}
 }
 
@@ -50,6 +55,10 @@ func (c *component) New(ctx context.Context, conf *config) (func(context.Context
 	if err != nil {
 		return nil, err
 	}
+	chain, err := c.Decorators.New(ctx, conf.Decorators)
+	if err != nil {
+		return nil, err
+	}
 
 	filterHandler := &v1.ConfigFilter{
 		LogFn:          runhttp.LoggerFromContext,
@@ -57,8 +66,9 @@ func (c *component) New(ctx context.Context, conf *config) (func(context.Context
 		ConfigFilterer: f,
 		Producer:       p,
 	}
+	decoratedFilter := chain.Decorate(filterHandler.Handle)
 	handlers := map[string]serverfull.Function{
-		"filter": serverfull.NewFunction(filterHandler.Handle),
+		"filter": serverfull.NewFunction(decoratedFilter),
 	}
 	fetcher := &serverfull.StaticFetcher{Functions: handlers}
 	if conf.LambdaMode {

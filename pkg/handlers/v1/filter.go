@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/asecurityteam/awsconfig-filterd/pkg/domain"
@@ -11,13 +12,15 @@ import (
 	"github.com/aws/aws-sdk-go/service/configservice"
 )
 
-// ConfigNotification is the basic structure of all incoming AWS Config SNS events
+const typeNotification = "notification"
+
+// configNotification is the basic structure of all incoming AWS Config SNS events
 // (https://docs.aws.amazon.com/config/latest/developerguide/example-sns-notification.html).
-type ConfigNotification struct {
+type configNotification struct {
+	Type               string `json:"Type"`
 	Message            string `json:"Message"`
 	Timestamp          string `json:"Timestamp"`
 	ProcessedTimestamp string `json:"ProcessedTimestamp"`
-	Type               string `json:"Type"`
 	MessageID          string `json:"MessageId"`
 	TopicArn           string `json:"TopicArn"`
 	Subject            string `json:"Subject"`
@@ -42,15 +45,33 @@ type ConfigFilter struct {
 }
 
 // Handle accepts Config events, applies a filter, and returns the events that match.
-func (h *ConfigFilter) Handle(ctx context.Context, in ConfigNotification) error {
+func (h *ConfigFilter) Handle(ctx context.Context, in domain.SNSInput) error {
 	logger := h.LogFn(ctx)
 	stater := h.StatFn(ctx)
 	var event ConfigEvent
-	if in.Message == "" {
+	var notification configNotification
+	var t interface{}
+	var ok bool
+
+	if t, ok = in["Type"]; !ok {
 		return nil
 	}
 
-	if e := json.Unmarshal([]byte(in.Message), &event); e != nil {
+	if val, ok := t.(string); !ok || !strings.EqualFold(val, typeNotification) {
+		return nil
+	}
+
+	bites, _ := json.Marshal(in)
+
+	if e := json.Unmarshal(bites, &notification); e != nil {
+		return e
+	}
+
+	if notification.Message == "" {
+		return nil
+	}
+
+	if e := json.Unmarshal([]byte(notification.Message), &event); e != nil {
 		logger.Error(logs.InvalidInput{Reason: e.Error()})
 		return e
 	}
@@ -75,11 +96,11 @@ func (h *ConfigFilter) Handle(ctx context.Context, in ConfigNotification) error 
 		return nil
 	}
 
-	if ts, err := time.Parse(time.RFC3339Nano, in.Timestamp); err == nil {
+	if ts, err := time.Parse(time.RFC3339Nano, notification.Timestamp); err == nil {
 		stater.Timing("event.awsconfig.filter.event.delay", time.Since(ts))
 	}
 	stater.Count("event.awsconfig.filter.accepted", 1)
-	in.ProcessedTimestamp = time.Now().Format(time.RFC3339Nano)
-	_, err := h.Producer.Produce(ctx, in)
+	notification.ProcessedTimestamp = time.Now().Format(time.RFC3339Nano)
+	_, err := h.Producer.Produce(ctx, notification)
 	return err
 }

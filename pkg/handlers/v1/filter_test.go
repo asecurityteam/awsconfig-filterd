@@ -31,6 +31,7 @@ func TestHandle(t *testing.T) {
 	tc := []struct {
 		name         string
 		in           string
+		t            string
 		expectedOut  string
 		expectedErr  error
 		filterCalled bool
@@ -39,14 +40,24 @@ func TestHandle(t *testing.T) {
 		{
 			name:         "success",
 			in:           validEvent,
+			t:            "Notification",
 			expectedOut:  validEvent,
 			expectedErr:  nil,
 			filterCalled: true,
 			filterOK:     true,
 		},
 		{
+			name:         "no type",
+			in:           validEvent,
+			expectedOut:  validEvent,
+			expectedErr:  nil,
+			filterCalled: false,
+			filterOK:     false,
+		},
+		{
 			name:         "invalid resource type",
 			in:           invalidResourceType,
+			t:            "Notification",
 			expectedOut:  "",
 			expectedErr:  nil,
 			filterCalled: true,
@@ -55,6 +66,7 @@ func TestHandle(t *testing.T) {
 		{
 			name:         "no resource type",
 			in:           noResourceType,
+			t:            "Notification",
 			expectedOut:  "",
 			expectedErr:  domain.ErrInvalidInput{Reason: "empty resource type"},
 			filterCalled: false,
@@ -63,6 +75,7 @@ func TestHandle(t *testing.T) {
 		{
 			name:         "invalid message type",
 			in:           invalidMessageType,
+			t:            "Notification",
 			expectedOut:  "",
 			expectedErr:  nil,
 			filterCalled: false,
@@ -71,6 +84,7 @@ func TestHandle(t *testing.T) {
 		{
 			name:         "no message",
 			in:           "",
+			t:            "Notification",
 			expectedOut:  "",
 			expectedErr:  nil,
 			filterCalled: false,
@@ -79,6 +93,7 @@ func TestHandle(t *testing.T) {
 		{
 			name:         "cannot unmarshal ConfigEvent",
 			in:           "0",
+			t:            "Notification",
 			expectedOut:  "",
 			expectedErr:  &json.UnmarshalTypeError{Value: "number", Offset: 1, Type: reflect.TypeOf(ConfigEvent{})},
 			filterCalled: false,
@@ -91,10 +106,11 @@ func TestHandle(t *testing.T) {
 			ctrl := gomock.NewController(t)
 			defer ctrl.Finish()
 
-			input := ConfigNotification{
+			bites, _ := json.Marshal(configNotification{
+				Type:      tt.t,
 				Message:   tt.in,
 				Timestamp: eventTimestamp,
-			}
+			})
 			mockFilterer := NewMockConfigFilterer(ctrl)
 			if tt.filterCalled {
 				mockFilterer.EXPECT().FilterConfig(gomock.Any()).Return(tt.filterOK)
@@ -103,7 +119,7 @@ func TestHandle(t *testing.T) {
 			if tt.filterOK {
 				mockProducer.EXPECT().Produce(gomock.Any(), gomock.Any()).Do(
 					func(_ context.Context, event interface{}) {
-						require.Equal(t, input.Message, event.(ConfigNotification).Message)
+						require.Equal(t, tt.in, event.(configNotification).Message)
 					},
 				).Return(nil, nil)
 			}
@@ -114,7 +130,8 @@ func TestHandle(t *testing.T) {
 				ConfigFilterer: mockFilterer,
 				Producer:       mockProducer,
 			}
-
+			var input domain.SNSInput
+			_ = json.Unmarshal(bites, &input)
 			actualErr := configFilterHandler.Handle(context.Background(), input)
 			require.IsType(t, tt.expectedErr, actualErr)
 		})
