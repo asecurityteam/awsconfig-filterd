@@ -9,8 +9,6 @@ import (
 	"testing"
 
 	domain "github.com/asecurityteam/awsconfig-filterd/pkg/domain"
-	"github.com/asecurityteam/logevent"
-	"github.com/asecurityteam/runhttp"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
 )
@@ -92,25 +90,32 @@ func TestHandle(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			ctrl := gomock.NewController(t)
 			defer ctrl.Finish()
-			mockFilterer := NewMockConfigFilterer(ctrl)
-			if tt.filterCalled {
-				mockFilterer.EXPECT().FilterConfig(gomock.Any()).Return(tt.filterOK)
-			}
 
 			input := ConfigNotification{
 				Message:   tt.in,
 				Timestamp: eventTimestamp,
 			}
-
-			configFilterHandler := &ConfigFilterHandler{
-				LogFn:          runhttp.LoggerFromContext,
-				StatFn:         runhttp.StatFromContext,
-				ConfigFilterer: mockFilterer,
+			mockFilterer := NewMockConfigFilterer(ctrl)
+			if tt.filterCalled {
+				mockFilterer.EXPECT().FilterConfig(gomock.Any()).Return(tt.filterOK)
+			}
+			mockProducer := NewMockProducer(ctrl)
+			if tt.filterOK {
+				mockProducer.EXPECT().Produce(gomock.Any(), gomock.Any()).Do(
+					func(_ context.Context, event interface{}) {
+						require.Equal(t, input.Message, event.(ConfigNotification).Message)
+					},
+				).Return(nil, nil)
 			}
 
-			ctx := logevent.NewContext(context.Background(), logevent.New(logevent.Config{Output: ioutil.Discard}))
-			actualOut, actualErr := configFilterHandler.Handle(ctx, input)
-			require.Equal(t, tt.expectedOut, actualOut.Message)
+			configFilterHandler := &ConfigFilter{
+				LogFn:          testLogFn,
+				StatFn:         testStatFn,
+				ConfigFilterer: mockFilterer,
+				Producer:       mockProducer,
+			}
+
+			actualErr := configFilterHandler.Handle(context.Background(), input)
 			require.IsType(t, tt.expectedErr, actualErr)
 		})
 	}

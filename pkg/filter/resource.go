@@ -7,25 +7,30 @@ import (
 	"github.com/aws/aws-sdk-go/service/configservice"
 )
 
-// ResourceTypeFiltererConfig defines the configuration options for a ResourceTypeFilterer.
-type ResourceTypeFiltererConfig struct {
-	ValidResourceTypes []string `description:"The set of AWS resource types that are filtered."`
+// ResourceTypeConfig contains settings for the AWS resource type filter.
+type ResourceTypeConfig struct {
+	Allowed []string `description:"List of AWS resource types allowed to pass through."`
 }
 
 // Name is used by the settings library to replace the default naming convention.
-func (c *ResourceTypeFiltererConfig) Name() string {
-	return "ResourceTypeFilter"
+func (c *ResourceTypeConfig) Name() string {
+	return "resourcetype"
 }
 
-// ResourceTypeFiltererComponent satisfies the settings library Component API,
+// ResourceTypeComponent satisfies the settings library Component API,
 // and may be used by the settings.NewComponent function.
-type ResourceTypeFiltererComponent struct{}
+type ResourceTypeComponent struct{}
 
-// Settings populates a set of default valid resource types for the ResourceTypeFilterer
+// NewResourceTypeComponent constructs a ResourceTypeComponent.
+func NewResourceTypeComponent() *ResourceTypeComponent {
+	return &ResourceTypeComponent{}
+}
+
+// Settings populates a set of default valid resource types for the ResourceType
 // if none are provided via config.
-func (*ResourceTypeFiltererComponent) Settings() *ResourceTypeFiltererConfig {
-	return &ResourceTypeFiltererConfig{
-		ValidResourceTypes: []string{
+func (*ResourceTypeComponent) Settings() *ResourceTypeConfig {
+	return &ResourceTypeConfig{
+		Allowed: []string{
 			configservice.ResourceTypeAwsEc2Instance,
 			configservice.ResourceTypeAwsElasticLoadBalancingLoadBalancer,
 			configservice.ResourceTypeAwsElasticLoadBalancingV2LoadBalancer,
@@ -33,22 +38,24 @@ func (*ResourceTypeFiltererComponent) Settings() *ResourceTypeFiltererConfig {
 	}
 }
 
-// New constructs a ResourceTypeFilterer from a config.
-func (*ResourceTypeFiltererComponent) New(_ context.Context, c *ResourceTypeFiltererConfig) (*ResourceTypeFilterer, error) {
-	return &ResourceTypeFilterer{
-		ValidResourceTypes: c.ValidResourceTypes,
+// New constructs a ResourceType from a config.
+func (*ResourceTypeComponent) New(_ context.Context, c *ResourceTypeConfig) (*ResourceType, error) {
+	return &ResourceType{
+		Allowed: c.Allowed,
 	}, nil
 }
 
-// ResourceTypeFilterer filters AWS Config items on resource types.
-type ResourceTypeFilterer struct {
-	ValidResourceTypes []string
+// ResourceType is a filter that only allows a known set of resource types
+// to pass through.
+type ResourceType struct {
+	Allowed []string
 }
 
-// FilterConfig returns true if a AWS Config item matches one of the valid resource types defined.
-func (f *ResourceTypeFilterer) FilterConfig(c domain.ConfigurationItem) bool {
-	for _, validResourceType := range f.ValidResourceTypes {
-		if c.ResourceType == validResourceType {
+// FilterConfig returns true if a AWS Config item matches one of the allowed
+// resource types defined.
+func (f *ResourceType) FilterConfig(c domain.ConfigurationItem) bool {
+	for _, allowed := range f.Allowed {
+		if c.ResourceType == allowed {
 			return true
 		}
 	}

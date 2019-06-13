@@ -13,6 +13,8 @@ type ConfigurationItem struct {
 
 // ConfigFilterer is the expected form of filters applied to AWS Config events.
 type ConfigFilterer interface {
+	// FilterConfig returns true if the element should continue along the
+	// pipeline. False indicates the element should be dropped.
 	FilterConfig(ConfigurationItem) bool
 }
 
