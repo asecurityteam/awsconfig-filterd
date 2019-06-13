@@ -5,11 +5,6 @@ x-runtime:
   logger:
     level: "INFO"
     output: "STDOUT"
-  stats:
-    output: DATADOG
-    datadog:
-      address: statsd:8125
-      flushinterval: "10s"
   signals:
     installed:
       - "OS"
@@ -66,10 +61,6 @@ paths:
       responses:
         "200":
           description: "Success"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConfigNotification'
         "400":
           description: "Invalid input"
           content:
@@ -79,7 +70,6 @@ paths:
       x-transportd:
         backend: app
         enabled:
-          - "metrics"
           - "accesslog"
           - "requestvalidation"
           - "responsevalidation"

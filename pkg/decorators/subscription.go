@@ -9,7 +9,9 @@ import (
 	"strings"
 
 	"github.com/asecurityteam/awsconfig-filterd/pkg/domain"
+	"github.com/asecurityteam/awsconfig-filterd/pkg/logs"
 	"github.com/asecurityteam/components"
+	"github.com/asecurityteam/runhttp"
 )
 
 const typeNotification = "SubscriptionConfirmation"
@@ -50,6 +52,7 @@ func (c *SubscriptionComponent) New(ctx context.Context, conf *SubscriptionConfi
 		return nil, e
 	}
 	return &Subscription{
+		LogFn: runhttp.LoggerFromContext,
 		Client: &http.Client{
 			Transport: rt,
 		},
@@ -58,36 +61,44 @@ func (c *SubscriptionComponent) New(ctx context.Context, conf *SubscriptionConfi
 
 // Subscription is a lambda decorator which will check for S=subscription confirmation messages
 type Subscription struct {
+	LogFn  domain.LogFn
 	Client *http.Client
 }
 
 // Decorate wraps the input lambda with a Subscription decorator
 func (s *Subscription) Decorate(l domain.Lambda) domain.Lambda {
 	return func(ctx context.Context, in domain.SNSInput) error {
+		logger := s.LogFn(ctx)
 		t, ok := in["Type"]
 		if !ok {
+			logger.Info(logs.InvalidInput{Reason: "Missing notification Type"})
 			return nil
 		}
 		val, ok := t.(string)
 		if !ok {
+			logger.Info(logs.InvalidInput{Reason: "Unable to parse notification Type"})
 			return nil
 		}
 		if !strings.EqualFold(val, typeNotification) {
 			return l(ctx, in)
 		}
 		var sub snsSubscription
-		bites, _ := json.Marshal(in)
-		if e := json.Unmarshal(bites, &sub); e != nil {
+		b, _ := json.Marshal(in)
+		if e := json.Unmarshal(b, &sub); e != nil {
+			logger.Info(logs.InvalidInput{Reason: e.Error()})
 			return e
 		}
 		res, e := s.Client.Get(sub.SubscribeURL)
 		if e != nil {
+			logger.Error(logs.SubscriptionError{Reason: e.Error()})
 			return e
 		}
 		defer res.Body.Close()
 		if res.StatusCode != http.StatusOK {
-			bites, _ := ioutil.ReadAll(res.Body)
-			return fmt.Errorf("Received unexpected error confirming the subscription [%d]: %s", res.StatusCode, bites)
+			b, _ := ioutil.ReadAll(res.Body)
+			e := fmt.Errorf("Received unexpected error confirming the subscription [%d]: %s", res.StatusCode, b)
+			logger.Error(logs.SubscriptionError{Reason: e.Error()})
+			return e
 		}
 		return nil
 	}

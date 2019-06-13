@@ -106,11 +106,11 @@ func TestHandle(t *testing.T) {
 			ctrl := gomock.NewController(t)
 			defer ctrl.Finish()
 
-			bites, _ := json.Marshal(configNotification{
-				Type:      tt.t,
-				Message:   tt.in,
-				Timestamp: eventTimestamp,
-			})
+			input := map[string]interface{}{
+				"Type":      tt.t,
+				"Message":   tt.in,
+				"Timestamp": eventTimestamp,
+			}
 			mockFilterer := NewMockConfigFilterer(ctrl)
 			if tt.filterCalled {
 				mockFilterer.EXPECT().FilterConfig(gomock.Any()).Return(tt.filterOK)
@@ -130,8 +130,6 @@ func TestHandle(t *testing.T) {
 				ConfigFilterer: mockFilterer,
 				Producer:       mockProducer,
 			}
-			var input domain.SNSInput
-			_ = json.Unmarshal(bites, &input)
 			actualErr := configFilterHandler.Handle(context.Background(), input)
 			require.IsType(t, tt.expectedErr, actualErr)
 		})

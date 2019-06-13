@@ -61,9 +61,9 @@ func (h *ConfigFilter) Handle(ctx context.Context, in domain.SNSInput) error {
 		return nil
 	}
 
-	bites, _ := json.Marshal(in)
+	b, _ := json.Marshal(in)
 
-	if e := json.Unmarshal(bites, &notification); e != nil {
+	if e := json.Unmarshal(b, &notification); e != nil {
 		return e
 	}
 
