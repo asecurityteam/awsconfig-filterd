@@ -72,6 +72,12 @@ AWSCONFIGFILTERD_PRODUCER_POST_ENDPOINT=""
 AWSCONFIGFILTERD_PRODUCER_POST_HTTPCLIENT_TYPE="DEFAULT"
 # (string) The full OpenAPI specification with transportd extensions.
 AWSCONFIGFILTERD_PRODUCER_POST_HTTPCLIENT_SMART_OPENAPI=""
+# ([]string) List of enabled lambda decorators
+AWSCONFIGFILTERD_DECORATOR_ENABLED="subscription"
+# (string) The type of HTTP client. Choices are SMART and DEFAULT.
+AWSCONFIGFILTERD_DECORATOR_SUBSCRIPTION_HTTPCLIENT_TYPE="default"
+# (string) The full OpenAPI specification with transportd extensions.
+AWSCONFIGFILTERD_DECORATOR_SUBSCRIPTION_HTTPCLIENT_SMART_OPENAPI=""
 ```
 
 For those who do not have access to AWS Lambda, you can run your own configuration by composing this

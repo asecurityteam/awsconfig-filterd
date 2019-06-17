@@ -1144,6 +1144,7 @@
     "github.com/asecurityteam/settings",
     "github.com/aws/aws-sdk-go/service/configservice",
     "github.com/golang/mock/gomock",
+    "github.com/stretchr/testify/assert",
     "github.com/stretchr/testify/require",
   ]
   solver-name = "gps-cdcl"
