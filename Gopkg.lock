@@ -35,7 +35,7 @@
   version = "v1.4.0"
 
 [[projects]]
-  digest = "1:19fbb0e13c81478036eb676268e8c15c5757f423fd4bcdbbb2305a615b8de1af"
+  digest = "1:87646314d6059ab5f937694b7e9e79fa6048b5a3708881a92f4128b91f1037fa"
   name = "github.com/Jeffail/benthos"
   packages = [
     "lib/api",
@@ -70,6 +70,7 @@
     "lib/util/aws/session",
     "lib/util/config",
     "lib/util/disk",
+    "lib/util/http",
     "lib/util/http/auth",
     "lib/util/http/client",
     "lib/util/retries",
@@ -78,8 +79,8 @@
     "lib/util/tls",
   ]
   pruneopts = "UT"
-  revision = "60a290f6ef81e6a3e7e674d3591c7485fa6170b0"
-  version = "v2.5.0"
+  revision = "6d8681ee006de345ba57f5f265bd16950794a96e"
+  version = "v2.7.0"
 
 [[projects]]
   digest = "1:06f9276c40d85647a9227cbf935f81b763171ca4f60c623ec172d40bce0613fa"
@@ -135,12 +136,60 @@
   version = "v1.0.0"
 
 [[projects]]
-  branch = "master"
-  digest = "1:038e22216b9a394d21c5075ce15d9c6fd2b6c140b8ab0399918ea6b6eacf70f5"
-  name = "github.com/asecurityteam/components"
+  digest = "1:6cbbc75cfbe13f5b3ee14c0395ba218144c8f72dc9d610057692c107e40fbab4"
+  name = "github.com/asecurityteam/component-connstate"
   packages = ["."]
   pruneopts = "UT"
-  revision = "bd85c6e2cfe93a66b00415e78ef68aedb7fe469e"
+  revision = "e8371614dbdbf67c13cb416c6b7366b0b4570bc4"
+  version = "v0.1.0"
+
+[[projects]]
+  digest = "1:50b6054c3166cb1490af953aca2fe787549c571072e90fb8977a063ca90c8883"
+  name = "github.com/asecurityteam/component-expvar"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "bf0d7879cb8dec94476c3861de4363767fa6e5f0"
+  version = "v0.1.0"
+
+[[projects]]
+  digest = "1:8b9ba3608150cd32628b5d0b207f6862bf60197dded671d9a6f5a0077b014872"
+  name = "github.com/asecurityteam/component-httpclient"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "69d323f868fb31fd079962e3445271d387d55737"
+  version = "v0.1.0"
+
+[[projects]]
+  digest = "1:2e65af6319735cecabb4fd33ad796b04929c5656667f2f94cdeda25535d81b59"
+  name = "github.com/asecurityteam/component-log"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "2a66e99dd017ee4200bb1483570af727995e6c5d"
+  version = "v0.1.0"
+
+[[projects]]
+  digest = "1:3db965a80b5a26b17692035d8aef56babb43073ba5eef05af1021c1fcf8299c3"
+  name = "github.com/asecurityteam/component-producer"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "f7913e172a0f33bf9a308d3b36299b5b33e6750b"
+  version = "v0.2.0"
+
+[[projects]]
+  digest = "1:79c187e5b848602e1ab00b6bf1bc4b36b30b580cf3050590da6437caaffe6ec9"
+  name = "github.com/asecurityteam/component-signals"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "0d15bff7d1c866f9982eb1e70f84c5e4ef8e4854"
+  version = "v0.1.0"
+
+[[projects]]
+  digest = "1:535f5aab9d8b2a9451d81673b6bcdb342a304fb8de506a11b08ae0fe0e7f24f7"
+  name = "github.com/asecurityteam/component-stat"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "4175403694f83e388be7d0f20404aee8cbb64916"
+  version = "v0.1.0"
 
 [[projects]]
   digest = "1:b4fccd099984b7d110071a0c53fdbc3bb1f5d9f444061f7c9e73ce49c6a15391"
@@ -162,12 +211,12 @@
   version = "1.0.4"
 
 [[projects]]
-  branch = "master"
-  digest = "1:25d5cef9e973ae384858296589ae7a2a6bd9be4bb5ce6b740885c87115433089"
+  digest = "1:07e44ec48d802cb92f337bfd3312aaced8d915a9934b60328f56a027c94138b7"
   name = "github.com/asecurityteam/runhttp"
   packages = ["."]
   pruneopts = "UT"
-  revision = "e67777b27ba7f00117c863d4ba2556b843fb04a0"
+  revision = "d57832e45684af266e155f7d068b1212cb6e7eda"
+  version = "v0.2.0"
 
 [[projects]]
   digest = "1:21e1a622dda0b442d15aad7ccef7c32c429531b404b575dfdbac8d94ab2263b8"
@@ -178,12 +227,12 @@
   version = "v0.2.0"
 
 [[projects]]
-  branch = "master"
   digest = "1:391bbf4e67d50d74c1bb7dfad79222181327ff6d9a32324ed022b12051b5d5e8"
   name = "github.com/asecurityteam/settings"
   packages = ["."]
   pruneopts = "UT"
   revision = "d4142d59861b3779aeba32111096d43ae940e49d"
+  version = "v0.1.0"
 
 [[projects]]
   digest = "1:067d27a5520b7ab98a652f32b33785de2ffc7028e50c722c993e7ee218046a30"
@@ -194,15 +243,15 @@
   version = "1.1.2"
 
 [[projects]]
-  digest = "1:84cc67ce0b592a693ed4ef7c10c0a53b260d74cb0755035f6aed528b0390ee22"
+  digest = "1:12a6b94ba9b4a8f265e7ed333bfff95a6d32d75a41d38f0063f7ed429598a70a"
   name = "github.com/asecurityteam/transportd"
   packages = [
     "pkg",
     "pkg/components",
   ]
   pruneopts = "UT"
-  revision = "d767356bcaf2ed0905c430d4fef33d10cfbd16af"
-  version = "v0.3.0"
+  revision = "8d9d1eeec1c0b7835e49eab27b2538c7b5fe8906"
+  version = "v0.3.1"
 
 [[projects]]
   digest = "1:019196f2ac870c197938d739cf0cdd4b78a39dc5c533021ed39899e390d34cd7"
@@ -218,7 +267,7 @@
   version = "v1.11.1"
 
 [[projects]]
-  digest = "1:c18b449f9636de3f599fc39a5a0ee47156c17ab8555b354ceeb89a93c8866d92"
+  digest = "1:d898ce26126ca733176595974ed9d4cc0e63c744c106b08b4cf090af2e4b5723"
   name = "github.com/aws/aws-sdk-go"
   packages = [
     "aws",
@@ -272,11 +321,11 @@
     "service/sts",
   ]
   pruneopts = "UT"
-  revision = "f3c4e7e3131f7d980c1267c5a32e804847624eae"
-  version = "v1.20.2"
+  revision = "dcb92372bfaa5a5e0df8b4f981ee04574970f9c6"
+  version = "v1.20.6"
 
 [[projects]]
-  digest = "1:a311d8231c5db1f07825d1bd7a7a1aca5180d499be10f88ef2d116dec4c7dca5"
+  digest = "1:4934e5e39af906e43f90db046ef879b3867868ebc552f227cebefd0f5997e195"
   name = "github.com/benhoyt/goawk"
   packages = [
     "internal/ast",
@@ -286,8 +335,8 @@
     "parser",
   ]
   pruneopts = "UT"
-  revision = "8b033f6ba93c36b9630725a419395011aba0b81c"
-  version = "v1.5.1"
+  revision = "1a4e25c71b2d8792192ecd827bb7464308a9da33"
+  version = "v1.6.0"
 
 [[projects]]
   digest = "1:d6afaeed1502aa28e80a4ed0981d570ad91b2579193404256ce672ed0a609e0d"
@@ -571,7 +620,7 @@
     "jwriter",
   ]
   pruneopts = "UT"
-  revision = "94de47d64c6323a57053b3dd1c97f250cee92741"
+  revision = "da37f6c1e4819c2ed4be6542856f9c0f0560348d"
 
 [[projects]]
   digest = "1:ff5ebae34cfbf047d505ee150de27e60570e8c394b3b8fdbb720ff6ac71985fc"
@@ -726,8 +775,8 @@
     "model",
   ]
   pruneopts = "UT"
-  revision = "d9a1ac54fefb52fd16b910a12a09fa4b496d0a8d"
-  version = "v0.5.0"
+  revision = "31bed53e4047fd6c510e43a941f90cb31be0972a"
+  version = "v0.6.0"
 
 [[projects]]
   digest = "1:403b810b43500b5b0a9a24a47347e31dc2783ccae8cf97c891b46f5b0496fa1a"
@@ -903,14 +952,14 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:d5891c5bca9c62e5d394ca26491d2b710a1dc08cedeb0ca8f9ac4c3305120b02"
+  digest = "1:cd7e85fc3687e062714febdee3e8efeb00a413a2a620d28908fd0258261d2353"
   name = "golang.org/x/crypto"
   packages = [
     "ed25519",
     "ed25519/internal/edwards25519",
   ]
   pruneopts = "UT"
-  revision = "57b3e21c3d5606066a87e63cfe07ec6b9f0db000"
+  revision = "cc06ce4a13d484c0101a9e92913248488a75786d"
 
 [[projects]]
   branch = "master"
@@ -932,7 +981,7 @@
     "websocket",
   ]
   pruneopts = "UT"
-  revision = "d28f0bde5980168871434b95cfc858db9f2a7a99"
+  revision = "3b0461eec859c4b73bb64fdc8285971fd33e3938"
 
 [[projects]]
   branch = "master"
@@ -961,14 +1010,14 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:3398992b8f4b00ce4a6a5f9770008cf66dcff8f128b51eeab8c1f657096cac8f"
+  digest = "1:fe40fbf915905f8a2397b321b3f10190edbdf5d293f087d01d7eb3a6d1a4adca"
   name = "golang.org/x/sys"
   packages = [
     "unix",
     "windows",
   ]
   pruneopts = "UT"
-  revision = "15dcb6c0061f497a3f66e3ea034b629c6dd4d99e"
+  revision = "c5567b49c5d04a5f83870795b8c0e2df43a8ce32"
 
 [[projects]]
   digest = "1:8d8faad6b12a3a4c819a3f9618cb6ee1fa1cfc33253abeeea8b55336721e3405"
@@ -1048,7 +1097,7 @@
     "protobuf/field_mask",
   ]
   pruneopts = "UT"
-  revision = "a7e196e89fd3a3c4d103ca540bd5dac3a736e375"
+  revision = "6af8c5fc6601ab6b41cd32742a65ce2f5bd9db57"
 
 [[projects]]
   digest = "1:9db2e6e9d0d0a6580f01a242d30e895efd65b57ed923f50ea37667a6c09665bd"
@@ -1138,7 +1187,8 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/asecurityteam/components",
+    "github.com/asecurityteam/component-httpclient",
+    "github.com/asecurityteam/component-producer",
     "github.com/asecurityteam/runhttp",
     "github.com/asecurityteam/serverfull",
     "github.com/asecurityteam/settings",

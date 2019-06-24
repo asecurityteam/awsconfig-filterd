@@ -10,7 +10,7 @@ import (
 
 	"github.com/asecurityteam/awsconfig-filterd/pkg/domain"
 	"github.com/asecurityteam/awsconfig-filterd/pkg/logs"
-	"github.com/asecurityteam/components"
+	httpclient "github.com/asecurityteam/component-httpclient"
 	"github.com/asecurityteam/runhttp"
 )
 
@@ -18,7 +18,7 @@ const typeNotification = "SubscriptionConfirmation"
 
 // SubscriptionConfig contains settings for the SubscriptionComponent.
 type SubscriptionConfig struct {
-	HTTP *components.HTTPConfig
+	HTTP *httpclient.Config
 }
 
 // Name of the configuration root.
@@ -28,13 +28,13 @@ func (*SubscriptionConfig) Name() string {
 
 // SubscriptionComponent is the component for the subscription decorator
 type SubscriptionComponent struct {
-	HTTP *components.HTTPComponent
+	HTTP *httpclient.Component
 }
 
 // NewSubscriptionComponent generates a SubscriptionComponent.
 func NewSubscriptionComponent() *SubscriptionComponent {
 	return &SubscriptionComponent{
-		HTTP: components.NewHTTPComponent(),
+		HTTP: httpclient.NewComponent(),
 	}
 }
 
