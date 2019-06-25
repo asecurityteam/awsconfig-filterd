@@ -7,7 +7,7 @@ import (
 	"github.com/asecurityteam/awsconfig-filterd/pkg/decorators"
 	"github.com/asecurityteam/awsconfig-filterd/pkg/filter"
 	v1 "github.com/asecurityteam/awsconfig-filterd/pkg/handlers/v1"
-	"github.com/asecurityteam/components"
+	producer "github.com/asecurityteam/component-producer"
 	"github.com/asecurityteam/runhttp"
 	"github.com/asecurityteam/serverfull"
 	"github.com/asecurityteam/settings"
@@ -16,7 +16,7 @@ import (
 type config struct {
 	Decorators *decorators.ChainConfig
 	Filter     *filter.FilterConfig
-	Producer   *components.ProducerConfig
+	Producer   *producer.Config
 	LambdaMode bool `description:"Use the Lambda SDK to start the system."`
 }
 
@@ -27,14 +27,14 @@ func (*config) Name() string {
 type component struct {
 	Decorators *decorators.ChainComponent
 	Filter     *filter.FilterComponent
-	Producer   *components.ProducerComponent
+	Producer   *producer.Component
 }
 
 func newComponent() *component {
 	return &component{
 		Decorators: decorators.NewChainComponent(),
 		Filter:     filter.NewFilterComponent(),
-		Producer:   components.NewProducerComponent(),
+		Producer:   producer.NewComponent(),
 	}
 }
 
