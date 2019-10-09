@@ -1,6 +1,8 @@
 <a id="markdown-AWS Config Filterd" name="AWS Config Filterd"></a>
 # AWS Config Filterd
 [![GoDoc](https://godoc.org/github.com/asecurityteam/awsconfig-filterd?status.svg)](https://godoc.org/github.com/asecurityteam/awsconfig-filterd)
+[![Build Status](https://travis-ci.org/asecurityteam/awsconfig-filterd.png?branch=master)](https://travis-ci.org/asecurityteam/awsconfig-filterd)
+[![codecov.io](https://codecov.io/github/asecurityteam/awsconfig-filterd/coverage.svg?branch=master)](https://codecov.io/github/asecurityteam/awsconfig-filterd?branch=master)
 
 A Lambda that filters the Config change stream so that only a selection of
 relevant resource types continue onto the next stream.
