@@ -34,6 +34,7 @@ func (*ResourceTypeComponent) Settings() *ResourceTypeConfig {
 			configservice.ResourceTypeAwsEc2Instance,
 			configservice.ResourceTypeAwsElasticLoadBalancingLoadBalancer,
 			configservice.ResourceTypeAwsElasticLoadBalancingV2LoadBalancer,
+			configservice.ResourceTypeAwsEc2NetworkInterface,
 		},
 	}
 }

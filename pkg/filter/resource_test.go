@@ -32,6 +32,11 @@ func TestResourceType(t *testing.T) {
 			true,
 		},
 		{
+			"ENI",
+			domain.ConfigurationItem{ResourceType: config.ResourceTypeAwsEc2NetworkInterface},
+			true,
+		},
+		{
 			"unknown resource",
 			domain.ConfigurationItem{ResourceType: "AWS::EC3::Instance"},
 			false,
