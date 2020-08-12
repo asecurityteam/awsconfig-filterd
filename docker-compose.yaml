@@ -20,7 +20,7 @@ services:
       - SERVERFULL_RUNTIME_STATS_OUTPUT=NULL
       - SERVERFULL_RUNTIME_SIGNALS_INSTALLED=OS
       - SERVERFULL_RUNTIME_SIGNALS_OS_SIGNALS=15 2
-      - RESOURCETYPEFILTER_VALIDRESOURCETYPES=AWS::EC2::Instance AWS::ElasticLoadBalancing::LoadBalancer AWS::ElasticLoadBalancingV2::LoadBalancer
+      - RESOURCETYPEFILTER_VALIDRESOURCETYPES=AWS::EC2::Instance AWS::ElasticLoadBalancing::LoadBalancer AWS::ElasticLoadBalancingV2::LoadBalancer AWS::EC2::NetworkInterface
   gateway:
     build:
       context: .
