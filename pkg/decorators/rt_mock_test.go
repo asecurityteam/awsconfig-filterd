@@ -4,8 +4,9 @@
 package decorators
 
 import (
-	gomock "github.com/golang/mock/gomock"
 	http "net/http"
+
+	gomock "github.com/golang/mock/gomock"
 )
 
 // Mock of RoundTripper interface

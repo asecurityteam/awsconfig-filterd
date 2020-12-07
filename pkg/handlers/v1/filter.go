@@ -32,8 +32,8 @@ type configNotification struct {
 
 // ConfigEvent represents a single AWS Config configuration Item.
 type ConfigEvent struct {
-	ConfigurationItem     domain.ConfigurationItem     `json:"configurationItem"`
-	MessageType           string                       `json:"messageType"`
+	ConfigurationItem domain.ConfigurationItem `json:"configurationItem"`
+	MessageType       string                   `json:"messageType"`
 }
 
 // ConfigFilter applies a filter to AWS Config events.

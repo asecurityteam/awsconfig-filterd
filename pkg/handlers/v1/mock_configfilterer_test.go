@@ -5,9 +5,10 @@
 package v1
 
 import (
+	reflect "reflect"
+
 	domain "github.com/asecurityteam/awsconfig-filterd/pkg/domain"
 	gomock "github.com/golang/mock/gomock"
-	reflect "reflect"
 )
 
 // MockConfigFilterer is a mock of ConfigFilterer interface
