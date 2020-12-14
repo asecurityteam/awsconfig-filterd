@@ -30,7 +30,7 @@ type configNotification struct {
 	UnsubscribeURL     string `json:"UnsubscribeURL"`
 }
 
-// ConfigEvent represents a single AWS Config Configuration Item.
+// ConfigEvent represents a single AWS Config configuration Item.
 type ConfigEvent struct {
 	ConfigurationItem domain.ConfigurationItem `json:"configurationItem"`
 	MessageType       string                   `json:"messageType"`
@@ -46,13 +46,13 @@ type ConfigFilter struct {
 
 // Handle accepts Config events, applies a filter, and returns the events that match.
 func (h *ConfigFilter) Handle(ctx context.Context, in domain.SNSInput) error {
+	receivedTs := time.Now()
 	logger := h.LogFn(ctx)
 	stater := h.StatFn(ctx)
 	var event ConfigEvent
 	var notification configNotification
 	var t interface{}
 	var ok bool
-
 	if t, ok = in["Type"]; !ok {
 		return nil
 	}
@@ -73,6 +73,8 @@ func (h *ConfigFilter) Handle(ctx context.Context, in domain.SNSInput) error {
 
 	if e := json.Unmarshal([]byte(notification.Message), &event); e != nil {
 		logger.Error(logs.InvalidInput{Reason: e.Error()})
+		// Time taken for filter decision to be made within filterd
+		stater.Timing("event.awsconfig.filter.process.latency", time.Since(receivedTs))
 		return e
 	}
 
@@ -83,6 +85,8 @@ func (h *ConfigFilter) Handle(ctx context.Context, in domain.SNSInput) error {
 	if event.ConfigurationItem.ResourceType == "" {
 		e := domain.ErrInvalidInput{Reason: "empty resource type"}
 		logger.Error(logs.InvalidInput{Reason: e.Error()})
+		// Time taken for filter decision to be made within filterd
+		stater.Timing("event.awsconfig.filter.process.latency", time.Since(receivedTs))
 		return e
 	}
 	stater.Count(
@@ -93,13 +97,18 @@ func (h *ConfigFilter) Handle(ctx context.Context, in domain.SNSInput) error {
 
 	if ok := h.ConfigFilterer.FilterConfig(event.ConfigurationItem); !ok {
 		stater.Count("event.awsconfig.filter.discarded", 1)
+		// Time taken for filter decision to be made within filterd
+		stater.Timing("event.awsconfig.filter.process.latency", time.Since(receivedTs))
 		return nil
 	}
 
+	// Delay since message was put on SQS
 	if ts, err := time.Parse(time.RFC3339Nano, notification.Timestamp); err == nil {
 		stater.Timing("event.awsconfig.filter.event.delay", time.Since(ts))
 	}
 	stater.Count("event.awsconfig.filter.accepted", 1)
+	// Time taken for filter decision to be made within filterd
+	stater.Timing("event.awsconfig.filter.process.latency", time.Since(receivedTs))
 	notification.ProcessedTimestamp = time.Now().Format(time.RFC3339Nano)
 	_, err := h.Producer.Produce(ctx, notification)
 	return err
