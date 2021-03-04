@@ -15,7 +15,7 @@ require (
 	github.com/asecurityteam/component-expvar v0.1.0 // indirect
 	github.com/asecurityteam/component-httpclient v0.1.0
 	github.com/asecurityteam/component-log v0.1.0 // indirect
-	github.com/asecurityteam/component-producer v0.2.0
+	github.com/asecurityteam/component-producer v0.6.3
 	github.com/asecurityteam/component-signals v0.1.0 // indirect
 	github.com/asecurityteam/component-stat v0.1.0 // indirect
 	github.com/asecurityteam/httpstats v0.0.0-20190225132931-c2085dfd2a77 // indirect
