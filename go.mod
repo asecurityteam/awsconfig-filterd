@@ -56,7 +56,7 @@ require (
 	github.com/rs/xstats v0.0.0-20170813190920-c67367528e16 // indirect
 	github.com/rs/zerolog v1.14.3 // indirect
 	github.com/streadway/amqp v0.0.0-20190404075320-75d898a42a94 // indirect
-	github.com/stretchr/testify v1.3.0
+	github.com/stretchr/testify v1.7.0
 	github.com/uber/jaeger-client-go v2.16.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.0.0+incompatible // indirect
 	go.opencensus.io v0.22.0 // indirect
