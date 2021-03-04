@@ -35,7 +35,7 @@ require (
 	github.com/getkin/kin-openapi v0.0.0-20190606143930-b820876da6b5 // indirect
 	github.com/go-chi/chi v3.3.4+incompatible // indirect
 	github.com/go-yaml/yaml v2.1.0+incompatible // indirect
-	github.com/golang/mock v1.2.0
+	github.com/golang/mock v1.5.0
 	github.com/google/uuid v1.1.1 // indirect
 	github.com/gorilla/mux v1.7.2 // indirect
 	github.com/justinas/alice v1.2.0 // indirect
@@ -48,6 +48,7 @@ require (
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
 	github.com/opentracing/opentracing-go v1.1.0 // indirect
+	github.com/pierrec/lz4 v2.0.5+incompatible // indirect
 	github.com/prometheus/common v0.6.0 // indirect
 	github.com/rs/cors v1.7.0 // indirect
 	github.com/rs/xhandler v0.0.0-20151224012956-d9d9599b6aaf // indirect
@@ -59,8 +60,6 @@ require (
 	github.com/uber/jaeger-client-go v2.16.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.0.0+incompatible // indirect
 	go.opencensus.io v0.22.0 // indirect
-	golang.org/x/crypto v0.0.0-20190621222207-cc06ce4a13d4 // indirect
-	golang.org/x/net v0.0.0-20190620200207-3b0461eec859 // indirect
 	golang.org/x/sys v0.0.0-20190624142023-c5567b49c5d0 // indirect
 	google.golang.org/appengine v1.6.1 // indirect
 	google.golang.org/genproto v0.0.0-20190620144150-6af8c5fc6601 // indirect
