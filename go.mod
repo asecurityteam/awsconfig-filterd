@@ -10,7 +10,6 @@ require (
 	github.com/Jeffail/gabs v1.4.0 // indirect
 	github.com/OneOfOne/xxhash v1.2.5 // indirect
 	github.com/Shopify/sarama v1.22.1 // indirect
-	github.com/andreyvit/diff v0.0.0-20170406064948-c7f18ee00883 // indirect
 	github.com/asecurityteam/component-connstate v0.1.0 // indirect
 	github.com/asecurityteam/component-expvar v0.1.0 // indirect
 	github.com/asecurityteam/component-httpclient v0.1.0
@@ -22,7 +21,7 @@ require (
 	github.com/asecurityteam/logevent v0.0.0-20190225122144-b32737d8d51c // indirect
 	github.com/asecurityteam/runhttp v0.2.0
 	github.com/asecurityteam/serverfull v0.2.0
-	github.com/asecurityteam/settings v0.1.0
+	github.com/asecurityteam/settings v0.4.0
 	github.com/asecurityteam/transport v0.0.0-20190225122138-b848ebf618ee // indirect
 	github.com/asecurityteam/transportd v0.3.1 // indirect
 	github.com/aws/aws-lambda-go v1.11.1 // indirect
@@ -34,7 +33,6 @@ require (
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/getkin/kin-openapi v0.0.0-20190606143930-b820876da6b5 // indirect
 	github.com/go-chi/chi v3.3.4+incompatible // indirect
-	github.com/go-yaml/yaml v2.1.0+incompatible // indirect
 	github.com/golang/mock v1.5.0
 	github.com/google/uuid v1.1.1 // indirect
 	github.com/gorilla/mux v1.7.2 // indirect

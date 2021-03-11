@@ -73,6 +73,8 @@ github.com/asecurityteam/serverfull v0.2.0 h1:ePDWKpBuV2UoTSOshhWLrxnmUW/LWTQgsj
 github.com/asecurityteam/serverfull v0.2.0/go.mod h1:PHStbkLUDG0ndv/B97RtPZOKhjB14vY1S4zsl2e4+lw=
 github.com/asecurityteam/settings v0.1.0 h1:W5CA/x0gby2Ilo6zV0GQVqgDdMX7AvcH8lMbrS718Io=
 github.com/asecurityteam/settings v0.1.0/go.mod h1:Wb6bajm1AgHtjLP8ecv7RqUTCX1hvrIhgX4sF3Ras8c=
+github.com/asecurityteam/settings v0.4.0 h1:L7fK4WqkvnvglBrfLBgp77LUDR2cxfSNWGFex7lrMK0=
+github.com/asecurityteam/settings v0.4.0/go.mod h1:frhlF5kT7WvdiRX3eQlCOjSppbYUfxxjM9xKTvYjcGo=
 github.com/asecurityteam/transport v0.0.0-20190225122138-b848ebf618ee h1:pcVkgdO6BYvnOX/mJLDogdPnMq0XaEpJLtsOhHUiZKA=
 github.com/asecurityteam/transport v0.0.0-20190225122138-b848ebf618ee/go.mod h1:0OVTikRn0uMRQsFsslN4ozUaD5YaRPUpqHTBzTsOtaM=
 github.com/asecurityteam/transportd v0.3.1 h1:EPetKIjZwZncvQjmKXbrBpZ1pWPgAsZdOAgnHXG4BsU=
