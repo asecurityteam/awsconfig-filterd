@@ -3,67 +3,47 @@ module github.com/asecurityteam/awsconfig-filterd
 go 1.12
 
 require (
-	bitbucket.org/atlassian/go-asap v0.0.0-20190528201952-3e884c030d60 // indirect
-	cloud.google.com/go v0.40.0 // indirect
-	github.com/DataDog/zstd v1.4.0 // indirect
-	github.com/Jeffail/benthos v0.0.0-20190620182735-6d8681ee006d // indirect
-	github.com/Jeffail/gabs v1.4.0 // indirect
-	github.com/OneOfOne/xxhash v1.2.5 // indirect
-	github.com/Shopify/sarama v1.22.1 // indirect
-	github.com/andreyvit/diff v0.0.0-20170406064948-c7f18ee00883 // indirect
-	github.com/asecurityteam/component-connstate v0.1.0 // indirect
-	github.com/asecurityteam/component-expvar v0.1.0 // indirect
-	github.com/asecurityteam/component-httpclient v0.1.0
-	github.com/asecurityteam/component-log v0.1.0 // indirect
-	github.com/asecurityteam/component-producer v0.2.0
-	github.com/asecurityteam/component-signals v0.1.0 // indirect
-	github.com/asecurityteam/component-stat v0.1.0 // indirect
-	github.com/asecurityteam/httpstats v0.0.0-20190225132931-c2085dfd2a77 // indirect
-	github.com/asecurityteam/logevent v0.0.0-20190225122144-b32737d8d51c // indirect
-	github.com/asecurityteam/runhttp v0.2.0
-	github.com/asecurityteam/serverfull v0.2.0
-	github.com/asecurityteam/settings v0.1.0
-	github.com/asecurityteam/transport v0.0.0-20190225122138-b848ebf618ee // indirect
-	github.com/asecurityteam/transportd v0.3.1 // indirect
-	github.com/aws/aws-lambda-go v1.11.1 // indirect
-	github.com/aws/aws-sdk-go v1.20.6
-	github.com/benhoyt/goawk v1.6.0 // indirect
-	github.com/bradfitz/gomemcache v0.0.0-20190329173943-551aad21a668 // indirect
-	github.com/eapache/go-resiliency v1.2.0 // indirect
-	github.com/eclipse/paho.mqtt.golang v1.2.0 // indirect
-	github.com/fatih/structs v1.1.0 // indirect
-	github.com/getkin/kin-openapi v0.0.0-20190606143930-b820876da6b5 // indirect
-	github.com/go-chi/chi v3.3.4+incompatible // indirect
-	github.com/go-yaml/yaml v2.1.0+incompatible // indirect
+	bitbucket.org/atlassian/go-asap v0.0.0-20210304212240-f9c3dc6b7f47 // indirect
+	cloud.google.com/go v0.79.0 // indirect
+	cloud.google.com/go/pubsub v1.10.1 // indirect
+	github.com/Azure/azure-sdk-for-go v52.3.1+incompatible // indirect
+	github.com/Azure/go-amqp v0.13.6 // indirect
+	github.com/HdrHistogram/hdrhistogram-go v1.1.0 // indirect
+	github.com/Shopify/sarama v1.28.0 // indirect
+	github.com/asecurityteam/component-httpclient v0.2.0
+	github.com/asecurityteam/component-producer v0.6.3
+	github.com/asecurityteam/runhttp v0.4.0
+	github.com/asecurityteam/serverfull v0.5.1
+	github.com/asecurityteam/settings v0.4.0
+	github.com/asecurityteam/transportd v1.3.1 // indirect
+	github.com/aws/aws-lambda-go v1.23.0 // indirect
+	github.com/aws/aws-sdk-go v1.37.28
+	github.com/benhoyt/goawk v1.7.0 // indirect
+	github.com/containerd/continuity v0.0.0-20210208174643-50096c924a4e // indirect
+	github.com/eclipse/paho.mqtt.golang v1.3.2 // indirect
+	github.com/getkin/kin-openapi v0.49.0 // indirect
+	github.com/go-openapi/swag v0.19.14 // indirect
+	github.com/gocql/gocql v0.0.0-20210310132943-486542b7b4b4 // indirect
 	github.com/golang/mock v1.5.0
-	github.com/google/uuid v1.1.1 // indirect
-	github.com/gorilla/mux v1.7.2 // indirect
-	github.com/justinas/alice v1.2.0 // indirect
-	github.com/lib/pq v1.1.1 // indirect
-	github.com/mailru/easyjson v0.0.0-20190620125010-da37f6c1e481 // indirect
-	github.com/nats-io/go-nats-streaming v0.4.4 // indirect
-	github.com/nats-io/nats-server v1.4.1 // indirect
-	github.com/nats-io/nuid v1.0.1 // indirect
-	github.com/olivere/elastic v6.2.19+incompatible // indirect
-	github.com/onsi/ginkgo v1.8.0 // indirect
-	github.com/onsi/gomega v1.5.0 // indirect
-	github.com/opentracing/opentracing-go v1.1.0 // indirect
-	github.com/pierrec/lz4 v2.0.5+incompatible // indirect
-	github.com/prometheus/common v0.6.0 // indirect
-	github.com/rs/cors v1.7.0 // indirect
-	github.com/rs/xhandler v0.0.0-20151224012956-d9d9599b6aaf // indirect
-	github.com/rs/xlog v0.0.0-20171227185259-131980fab91b // indirect
-	github.com/rs/xstats v0.0.0-20170813190920-c67367528e16 // indirect
-	github.com/rs/zerolog v1.14.3 // indirect
-	github.com/streadway/amqp v0.0.0-20190404075320-75d898a42a94 // indirect
-	github.com/stretchr/testify v1.3.0
-	github.com/uber/jaeger-client-go v2.16.0+incompatible // indirect
-	github.com/uber/jaeger-lib v2.0.0+incompatible // indirect
-	go.opencensus.io v0.22.0 // indirect
-	golang.org/x/sys v0.0.0-20190624142023-c5567b49c5d0 // indirect
-	google.golang.org/appengine v1.6.1 // indirect
-	google.golang.org/genproto v0.0.0-20190620144150-6af8c5fc6601 // indirect
-	google.golang.org/grpc v1.21.1 // indirect
+	github.com/golang/snappy v0.0.3 // indirect
+	github.com/itchyny/astgen-go v0.0.0-20210222032259-bf31276dfbe1 // indirect
+	github.com/itchyny/gojq v0.12.2 // indirect
+	github.com/jhump/protoreflect v1.8.2 // indirect
+	github.com/klauspost/compress v1.11.12 // indirect
+	github.com/lib/pq v1.10.0 // indirect
+	github.com/mailru/easyjson v0.7.7 // indirect
+	github.com/nats-io/nats-streaming-server v0.21.1 // indirect
+	github.com/onsi/ginkgo v1.15.1 // indirect
+	github.com/onsi/gomega v1.11.0 // indirect
+	github.com/pebbe/zmq4 v1.2.5 // indirect
+	github.com/pkg/sftp v1.13.0 // indirect
+	github.com/prometheus/common v0.18.0 // indirect
+	github.com/sirupsen/logrus v1.8.1 // indirect
+	github.com/stretchr/testify v1.7.0
+	golang.org/x/exp v0.0.0-20210220032938-85be41e4509f // indirect
+	golang.org/x/mod v0.4.2 // indirect
+	golang.org/x/sys v0.0.0-20210309074719-68d13333faf2 // indirect
+	golang.org/x/term v0.0.0-20210220032956-6a3ed077a48d // indirect
+	gonum.org/v1/gonum v0.9.0 // indirect
+	gonum.org/v1/netlib v0.0.0-20210302091547-ede94419cf37 // indirect
 )
-
-replace github.com/uber/jaeger-lib v1.5.0+incompatible => github.com/uber/jaeger-lib v1.5.0
