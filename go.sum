@@ -69,6 +69,8 @@ github.com/asecurityteam/logevent v0.0.0-20190225122144-b32737d8d51c h1:v630DsE4
 github.com/asecurityteam/logevent v0.0.0-20190225122144-b32737d8d51c/go.mod h1:B8p/D2QVPuRA9tiDTByVrXegCsrfy8bWEgnAka23EO0=
 github.com/asecurityteam/runhttp v0.2.0 h1:guvLZ5cGR2g+XKUuyTGf7e2Myx/F3TbQITUHXsXP+9M=
 github.com/asecurityteam/runhttp v0.2.0/go.mod h1:13Zb/7m5FQVu1gHjt+YDse6aqfJ5LuC79u8xjM64jrI=
+github.com/asecurityteam/runhttp v0.4.0 h1:V0sjkLA7Onkmpnnu574yQL8k9g4JEtyDvWnmJ2fTZ4s=
+github.com/asecurityteam/runhttp v0.4.0/go.mod h1:dxiW787QEACjoGlcgcbzGO90IY//PsV6d45Mf4kQVME=
 github.com/asecurityteam/serverfull v0.2.0 h1:ePDWKpBuV2UoTSOshhWLrxnmUW/LWTQgsj9MK0zvZm0=
 github.com/asecurityteam/serverfull v0.2.0/go.mod h1:PHStbkLUDG0ndv/B97RtPZOKhjB14vY1S4zsl2e4+lw=
 github.com/asecurityteam/settings v0.1.0 h1:W5CA/x0gby2Ilo6zV0GQVqgDdMX7AvcH8lMbrS718Io=
@@ -139,6 +141,8 @@ github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeME
 github.com/gliderlabs/ssh v0.1.1/go.mod h1:U7qILu1NlMHj9FlMhZLlkCdDnU1DBEAqr0aevW3Awn0=
 github.com/go-chi/chi v3.3.4+incompatible h1:X+OApYAmoQS6jr1WoUgW+t5Ry5RYGXq2A//WAL5xdAU=
 github.com/go-chi/chi v3.3.4+incompatible/go.mod h1:eB3wogJHnLi3x/kFX2A+IbTBlXxmMeXJVKy9tTv1XzQ=
+github.com/go-chi/chi v4.0.3+incompatible h1:gakN3pDJnzZN5jqFV2TEdF66rTfKeITyR8qu6ekICEY=
+github.com/go-chi/chi v4.0.3+incompatible/go.mod h1:eB3wogJHnLi3x/kFX2A+IbTBlXxmMeXJVKy9tTv1XzQ=
 github.com/go-kit/kit v0.8.0/go.mod h1:xBxKIO96dXMWWy0MnWVtmwkA9/13aqxPnvrjFYMA2as=
 github.com/go-logfmt/logfmt v0.3.0/go.mod h1:Qt1PoO58o5twSAckw1HlFXLmHsOX5/0LbT9GBnD5lWE=
 github.com/go-logfmt/logfmt v0.4.0/go.mod h1:3RMwSq7FuexP4Kalkev3ejPJsZTpXXBr9+V4qmtdjCk=
@@ -339,6 +343,7 @@ github.com/rs/xlog v0.0.0-20171227185259-131980fab91b h1:65vbRzwfvVUk63GnEiBy1ls
 github.com/rs/xlog v0.0.0-20171227185259-131980fab91b/go.mod h1:PJ0wmxt3GdhZAbIT0S8HQXsHuLt11tPiF8bUKXUV77w=
 github.com/rs/xstats v0.0.0-20170813190920-c67367528e16 h1:m0aigb++JZXs+tzTO60LOOKSOXWyr7scDxlaSvU6HN8=
 github.com/rs/xstats v0.0.0-20170813190920-c67367528e16/go.mod h1:5Cg6M3g+Dp4RSFNYBtjJxxjksZc00LbESra5Sz6fGSU=
+github.com/rs/zerolog v1.11.0/go.mod h1:YbFCdg8HfsridGWAh22vktObvhZbQsZXe4/zB0OKkWU=
 github.com/rs/zerolog v1.14.3 h1:4EGfSkR2hJDB0s3oFfrlPqjU1e4WLncergLil3nEKW0=
 github.com/rs/zerolog v1.14.3/go.mod h1:3WXPzbXEEliJ+a6UFE4vhIxV8qR1EML6ngzP9ug4eYg=
 github.com/russross/blackfriday v1.5.2/go.mod h1:JO/DiYxRf+HjHt06OyowR9PTA263kcR/rfWxYHBV53g=
