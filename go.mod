@@ -10,31 +10,20 @@ require (
 	github.com/Jeffail/gabs v1.4.0 // indirect
 	github.com/OneOfOne/xxhash v1.2.5 // indirect
 	github.com/Shopify/sarama v1.22.1 // indirect
-	github.com/andreyvit/diff v0.0.0-20170406064948-c7f18ee00883 // indirect
-	github.com/asecurityteam/component-connstate v0.1.0 // indirect
-	github.com/asecurityteam/component-expvar v0.1.0 // indirect
 	github.com/asecurityteam/component-httpclient v0.1.0
-	github.com/asecurityteam/component-log v0.1.0 // indirect
 	github.com/asecurityteam/component-producer v0.2.0
-	github.com/asecurityteam/component-signals v0.1.0 // indirect
-	github.com/asecurityteam/component-stat v0.1.0 // indirect
 	github.com/asecurityteam/httpstats v0.0.0-20190225132931-c2085dfd2a77 // indirect
-	github.com/asecurityteam/logevent v0.0.0-20190225122144-b32737d8d51c // indirect
-	github.com/asecurityteam/runhttp v0.2.0
-	github.com/asecurityteam/serverfull v0.2.0
-	github.com/asecurityteam/settings v0.1.0
+	github.com/asecurityteam/runhttp v0.4.0
+	github.com/asecurityteam/serverfull v0.5.1
+	github.com/asecurityteam/settings v0.4.0
 	github.com/asecurityteam/transport v0.0.0-20190225122138-b848ebf618ee // indirect
 	github.com/asecurityteam/transportd v0.3.1 // indirect
-	github.com/aws/aws-lambda-go v1.11.1 // indirect
 	github.com/aws/aws-sdk-go v1.20.6
 	github.com/benhoyt/goawk v1.6.0 // indirect
 	github.com/bradfitz/gomemcache v0.0.0-20190329173943-551aad21a668 // indirect
 	github.com/eapache/go-resiliency v1.2.0 // indirect
 	github.com/eclipse/paho.mqtt.golang v1.2.0 // indirect
-	github.com/fatih/structs v1.1.0 // indirect
 	github.com/getkin/kin-openapi v0.0.0-20190606143930-b820876da6b5 // indirect
-	github.com/go-chi/chi v3.3.4+incompatible // indirect
-	github.com/go-yaml/yaml v2.1.0+incompatible // indirect
 	github.com/golang/mock v1.5.0
 	github.com/google/uuid v1.1.1 // indirect
 	github.com/gorilla/mux v1.7.2 // indirect
@@ -51,12 +40,8 @@ require (
 	github.com/pierrec/lz4 v2.0.5+incompatible // indirect
 	github.com/prometheus/common v0.6.0 // indirect
 	github.com/rs/cors v1.7.0 // indirect
-	github.com/rs/xhandler v0.0.0-20151224012956-d9d9599b6aaf // indirect
-	github.com/rs/xlog v0.0.0-20171227185259-131980fab91b // indirect
-	github.com/rs/xstats v0.0.0-20170813190920-c67367528e16 // indirect
-	github.com/rs/zerolog v1.14.3 // indirect
 	github.com/streadway/amqp v0.0.0-20190404075320-75d898a42a94 // indirect
-	github.com/stretchr/testify v1.3.0
+	github.com/stretchr/testify v1.7.0
 	github.com/uber/jaeger-client-go v2.16.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.0.0+incompatible // indirect
 	go.opencensus.io v0.22.0 // indirect
