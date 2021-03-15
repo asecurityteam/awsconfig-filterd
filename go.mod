@@ -17,7 +17,7 @@ require (
 	github.com/asecurityteam/settings v0.4.0
 	github.com/asecurityteam/transportd v1.3.1 // indirect
 	github.com/aws/aws-lambda-go v1.23.0 // indirect
-	github.com/aws/aws-sdk-go v1.37.28
+	github.com/aws/aws-sdk-go v1.37.31
 	github.com/benhoyt/goawk v1.7.0 // indirect
 	github.com/containerd/continuity v0.0.0-20210208174643-50096c924a4e // indirect
 	github.com/eclipse/paho.mqtt.golang v1.3.2 // indirect
