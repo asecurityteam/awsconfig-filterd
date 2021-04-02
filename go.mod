@@ -1,6 +1,6 @@
 module github.com/asecurityteam/awsconfig-filterd
 
-go 1.12
+go 1.15
 
 require (
 	bitbucket.org/atlassian/go-asap v0.0.0-20210304212240-f9c3dc6b7f47 // indirect
