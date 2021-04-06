@@ -122,6 +122,8 @@ github.com/HdrHistogram/hdrhistogram-go v1.1.0 h1:6dpdDPTRoo78HxAJ6T1HfMiKSnqhgR
 github.com/HdrHistogram/hdrhistogram-go v1.1.0/go.mod h1:yDgFjdqOqDEKOvasDdhWNXYg9BVp4O+o5f6V/ehm6Oo=
 github.com/Jeffail/benthos/v3 v3.42.0 h1:BSF7jcUdsrwgas9Xoap2L3r16o+GAkYMRuqjEGVeKfk=
 github.com/Jeffail/benthos/v3 v3.42.0/go.mod h1:J7FeqUH1J7FcfvibBq5Afec6pDge2FdXqTvQDZXQcV4=
+github.com/Jeffail/benthos/v3 v3.42.1 h1:yl7J5vsan8ly0yZzbEtDQgRlRsMCifXZ5bk07QwOpl8=
+github.com/Jeffail/benthos/v3 v3.42.1/go.mod h1:J7FeqUH1J7FcfvibBq5Afec6pDge2FdXqTvQDZXQcV4=
 github.com/Jeffail/gabs/v2 v2.6.0 h1:WdCnGaDhNa4LSRTMwhLZzJ7SRDXjABNP13SOKvCpL5w=
 github.com/Jeffail/gabs/v2 v2.6.0/go.mod h1:xCn81vdHKxFUuWWAaD5jCTQDNPBMh5pPs9IJ+NcziBI=
 github.com/Jeffail/grok v1.1.0 h1:kiHmZ+0J5w/XUihRgU3DY9WIxKrNQCDjnfAb6bMLFaE=
@@ -194,6 +196,8 @@ github.com/asecurityteam/component-log v0.2.0 h1:M+Yl4IAKB3muV/Uk09qsMoFKK+2BHsQ
 github.com/asecurityteam/component-log v0.2.0/go.mod h1:ox/d62Z33M4UfH4Yt6sprwxZqAjJDbWrEuLSB5npqKk=
 github.com/asecurityteam/component-producer v0.6.3 h1:CRInwie53J+OSEpGAWaIiTmjHw+z2WQnKpspiIHNf7U=
 github.com/asecurityteam/component-producer v0.6.3/go.mod h1:JPeTnlzvFT/LtVn6No/5ew/fw6ZJAIQIXCSyxaUkyW8=
+github.com/asecurityteam/component-producer v0.6.5 h1:tNThTcn5S+V0/3ul8C3UkvYGUHiQTUzgcVfXG6W0A4M=
+github.com/asecurityteam/component-producer v0.6.5/go.mod h1:bEMwMmUNXyEM+vFTOQNF3RCfqkiqhHEF/Bxd1IgmkZw=
 github.com/asecurityteam/component-signals v0.1.0 h1:aB/RxnOJmpqv4VYBGN0O1z4Ygul9BoqaF8BZ7Oj07Mg=
 github.com/asecurityteam/component-signals v0.1.0/go.mod h1:WfBa3Yc5TSqqhDB4aaifDIGx33EGhKuKzhYlKe/aeMk=
 github.com/asecurityteam/component-signals v0.2.0 h1:Q8UaEslR3417H4eKkjUJhwsqI3cM03oCO1PG7yevj+c=
@@ -1090,6 +1094,7 @@ github.com/nats-io/jwt v0.3.0/go.mod h1:fRYCDE99xlTsqUzISS1Bi75UBJ6ljOJQOAAu5Vgl
 github.com/nats-io/jwt v0.3.2/go.mod h1:/euKqTS1ZD+zzjYrY7pseZrTtWQSjujC7xjPc8wL6eU=
 github.com/nats-io/jwt v1.1.0 h1:+vOlgtM0ZsF46GbmUoadq0/2rChNS45gtxHEa3H1gqM=
 github.com/nats-io/jwt v1.1.0/go.mod h1:n3cvmLfBfnpV4JJRN7lRYCyZnw48ksGsbThGXEk4w9M=
+github.com/nats-io/jwt v1.2.0 h1:CtMO++M18rDge6iE+/eGpoeniAMP+TcqY4oIr/mM4Mo=
 github.com/nats-io/jwt v1.2.0/go.mod h1:/xX356yQA6LuXI9xWW7mZNpxgF2mBmGecH+Fj34sP5Q=
 github.com/nats-io/jwt v1.2.2 h1:w3GMTO969dFg+UOKTmmyuu7IGdusK+7Ytlt//OYH/uU=
 github.com/nats-io/jwt v1.2.2/go.mod h1:/xX356yQA6LuXI9xWW7mZNpxgF2mBmGecH+Fj34sP5Q=

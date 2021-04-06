@@ -11,7 +11,7 @@ require (
 	github.com/HdrHistogram/hdrhistogram-go v1.1.0 // indirect
 	github.com/Shopify/sarama v1.28.0 // indirect
 	github.com/asecurityteam/component-httpclient v0.2.0
-	github.com/asecurityteam/component-producer v0.6.3
+	github.com/asecurityteam/component-producer v0.6.5
 	github.com/asecurityteam/runhttp v0.4.0
 	github.com/asecurityteam/serverfull v0.5.1
 	github.com/asecurityteam/settings v0.4.0
