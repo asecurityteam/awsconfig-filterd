@@ -1,6 +1,6 @@
 module github.com/asecurityteam/awsconfig-filterd
 
-go 1.12
+go 1.15
 
 require (
 	bitbucket.org/atlassian/go-asap v0.0.0-20210304212240-f9c3dc6b7f47 // indirect
@@ -26,7 +26,6 @@ require (
 	github.com/gocql/gocql v0.0.0-20210310132943-486542b7b4b4 // indirect
 	github.com/golang/mock v1.5.0
 	github.com/golang/snappy v0.0.3 // indirect
-	github.com/itchyny/astgen-go v0.0.0-20210222032259-bf31276dfbe1 // indirect
 	github.com/itchyny/gojq v0.12.2 // indirect
 	github.com/jhump/protoreflect v1.8.2 // indirect
 	github.com/klauspost/compress v1.11.12 // indirect
