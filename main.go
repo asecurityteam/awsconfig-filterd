@@ -7,7 +7,7 @@ import (
 	"github.com/asecurityteam/awsconfig-filterd/pkg/decorators"
 	"github.com/asecurityteam/awsconfig-filterd/pkg/filter"
 	v1 "github.com/asecurityteam/awsconfig-filterd/pkg/handlers/v1"
-	producer "github.com/asecurityteam/component-producer"
+	producer "github.com/asecurityteam/component-producer/v2"
 	"github.com/asecurityteam/runhttp"
 	"github.com/asecurityteam/serverfull"
 	"github.com/asecurityteam/settings"
