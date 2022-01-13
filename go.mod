@@ -14,6 +14,7 @@ require (
 	github.com/go-openapi/swag v0.19.14 // indirect
 	github.com/golang/mock v1.6.0
 	github.com/mailru/easyjson v0.7.7 // indirect
+	github.com/microcosm-cc/bluemonday v1.0.17 // indirect
 	github.com/stretchr/testify v1.7.0
-	golang.org/x/text v0.3.5 // indirect
+	golang.org/x/net v0.0.0-20210614182718-04defd469f4e // indirect
 )
