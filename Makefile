@@ -1,6 +1,6 @@
 TAG := $(shell git rev-parse --short HEAD)
 DIR := $(shell pwd -L)
-SDCLI=asecurityteam/sdcli:v1.1.3
+SDCLI=asecurityteam/sdcli:v1.2.3
 
 dep:
 	docker run -ti \
