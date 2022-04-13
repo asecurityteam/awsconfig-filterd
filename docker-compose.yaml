@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    platform: linux/x86_64
     environment:
       - SERVERFULL_RUNTIME_HTTPSERVER_ADDRESS=:8081
       - SERVERFULL_RUNTIME_CONNSTATE_REPORTINTERVAL=5s
