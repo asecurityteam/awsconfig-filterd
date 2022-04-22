@@ -3,6 +3,7 @@ package v1
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 	"path/filepath"
 	"reflect"
@@ -36,6 +37,7 @@ func TestHandle(t *testing.T) {
 		expectedErr  error
 		filterCalled bool
 		filterOK     bool
+		producerOK   bool
 	}{
 		{
 			name:         "success",
@@ -45,6 +47,7 @@ func TestHandle(t *testing.T) {
 			expectedErr:  nil,
 			filterCalled: true,
 			filterOK:     true,
+			producerOK:   true,
 		},
 		{
 			name:         "no type",
@@ -53,6 +56,7 @@ func TestHandle(t *testing.T) {
 			expectedErr:  nil,
 			filterCalled: false,
 			filterOK:     false,
+			producerOK:   true,
 		},
 		{
 			name:         "invalid resource type",
@@ -62,6 +66,7 @@ func TestHandle(t *testing.T) {
 			expectedErr:  nil,
 			filterCalled: true,
 			filterOK:     false,
+			producerOK:   true,
 		},
 		{
 			name:         "no resource type",
@@ -71,6 +76,7 @@ func TestHandle(t *testing.T) {
 			expectedErr:  domain.ErrInvalidInput{Reason: "empty resource type"},
 			filterCalled: false,
 			filterOK:     false,
+			producerOK:   true,
 		},
 		{
 			name:         "invalid message type",
@@ -80,6 +86,7 @@ func TestHandle(t *testing.T) {
 			expectedErr:  nil,
 			filterCalled: false,
 			filterOK:     false,
+			producerOK:   true,
 		},
 		{
 			name:         "no message",
@@ -89,6 +96,7 @@ func TestHandle(t *testing.T) {
 			expectedErr:  nil,
 			filterCalled: false,
 			filterOK:     false,
+			producerOK:   true,
 		},
 		{
 			name:         "cannot unmarshal ConfigEvent",
@@ -98,6 +106,17 @@ func TestHandle(t *testing.T) {
 			expectedErr:  &json.UnmarshalTypeError{Value: "number", Offset: 1, Type: reflect.TypeOf(ConfigEvent{})},
 			filterCalled: false,
 			filterOK:     false,
+			producerOK:   true,
+		},
+		{
+			name:         "producer error",
+			in:           validEvent,
+			t:            "Notification",
+			expectedOut:  "",
+			expectedErr:  errors.New("Producer Error"),
+			filterCalled: true,
+			filterOK:     true,
+			producerOK:   false,
 		},
 	}
 
@@ -117,11 +136,19 @@ func TestHandle(t *testing.T) {
 			}
 			mockProducer := NewMockProducer(ctrl)
 			if tt.filterOK {
-				mockProducer.EXPECT().Produce(gomock.Any(), gomock.Any()).Do(
-					func(_ context.Context, event interface{}) {
-						require.Equal(t, tt.in, event.(configNotification).Message)
-					},
-				).Return(nil, nil)
+				if tt.producerOK {
+					mockProducer.EXPECT().Produce(gomock.Any(), gomock.Any()).Do(
+						func(_ context.Context, event interface{}) {
+							require.Equal(t, tt.in, event.(configNotification).Message)
+						},
+					).Return(nil, nil)
+				} else {
+					mockProducer.EXPECT().Produce(gomock.Any(), gomock.Any()).Do(
+						func(_ context.Context, event interface{}) {
+							require.Equal(t, tt.in, event.(configNotification).Message)
+						},
+					).Return(nil, errors.New("Producer Error"))
+				}
 			}
 
 			configFilterHandler := &ConfigFilter{

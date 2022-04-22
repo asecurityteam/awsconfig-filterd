@@ -61,11 +61,7 @@ func (h *ConfigFilter) Handle(ctx context.Context, in domain.SNSInput) error {
 		return nil
 	}
 
-	b, e := json.Marshal(in)
-	if e != nil {
-		logger.Error(logs.InvalidInput{Reason: e.Error()})
-		return e
-	}
+	b, _ := json.Marshal(in)
 
 	if e := json.Unmarshal(b, &notification); e != nil {
 		logger.Error(logs.InvalidInput{Reason: e.Error()})
@@ -117,7 +113,7 @@ func (h *ConfigFilter) Handle(ctx context.Context, in domain.SNSInput) error {
 	notification.ProcessedTimestamp = time.Now().Format(time.RFC3339Nano)
 	_, err := h.Producer.Produce(ctx, notification)
 	if err != nil {
-		logger.Error(logs.BenthosError{Reason: err.Error()})
+		logger.Error(logs.ProducerError{Reason: err.Error()})
 	}
 	return err
 }
