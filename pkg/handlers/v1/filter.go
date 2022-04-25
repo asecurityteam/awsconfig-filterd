@@ -64,6 +64,7 @@ func (h *ConfigFilter) Handle(ctx context.Context, in domain.SNSInput) error {
 	b, _ := json.Marshal(in)
 
 	if e := json.Unmarshal(b, &notification); e != nil {
+		logger.Error(logs.InvalidInput{Reason: e.Error()})
 		return e
 	}
 
@@ -111,5 +112,8 @@ func (h *ConfigFilter) Handle(ctx context.Context, in domain.SNSInput) error {
 	stater.Timing("event.awsconfig.filter.process.latency", time.Since(receivedTs))
 	notification.ProcessedTimestamp = time.Now().Format(time.RFC3339Nano)
 	_, err := h.Producer.Produce(ctx, notification)
+	if err != nil {
+		logger.Error(logs.ProducerError{Reason: err.Error()})
+	}
 	return err
 }

@@ -11,3 +11,9 @@ type SubscriptionError struct {
 	Reason  string `logevent:"reason"`
 	Message string `logevent:"message,default=subscription-error"`
 }
+
+// ProducerError is logged when the the Producer Component returns an error
+type ProducerError struct {
+	Reason  string `logevent:"reason"`
+	Message string `logevent:"message,default=benthos-error"`
+}
