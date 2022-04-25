@@ -42,6 +42,8 @@ github.com/asecurityteam/component-log v0.2.0 h1:M+Yl4IAKB3muV/Uk09qsMoFKK+2BHsQ
 github.com/asecurityteam/component-log v0.2.0/go.mod h1:ox/d62Z33M4UfH4Yt6sprwxZqAjJDbWrEuLSB5npqKk=
 github.com/asecurityteam/component-producer/v2 v2.0.1 h1:g1q0NiRkCDmoPNkZcVMXRNe01PtOu/rOMHW1SOthXaE=
 github.com/asecurityteam/component-producer/v2 v2.0.1/go.mod h1:7uOo1U4MinaoIbJJ5nAUwWX5ZnZ7tBK88kKYSzB/aBA=
+github.com/asecurityteam/component-producer/v2 v2.1.0 h1:y2auXO4Y90MuxcgYOxyeLVrN+gM5y67avkS3uevmuPA=
+github.com/asecurityteam/component-producer/v2 v2.1.0/go.mod h1:l+48t+lcUC/PD7zJPNl7Ja47kDByr6tIzWuqKg48LGE=
 github.com/asecurityteam/component-signals v0.1.0 h1:aB/RxnOJmpqv4VYBGN0O1z4Ygul9BoqaF8BZ7Oj07Mg=
 github.com/asecurityteam/component-signals v0.1.0/go.mod h1:WfBa3Yc5TSqqhDB4aaifDIGx33EGhKuKzhYlKe/aeMk=
 github.com/asecurityteam/component-signals v0.2.0 h1:Q8UaEslR3417H4eKkjUJhwsqI3cM03oCO1PG7yevj+c=
@@ -84,6 +86,8 @@ github.com/asecurityteam/transportd v0.3.0/go.mod h1:4X8x+TzBC+9/ct4jEwbfl9QaAAr
 github.com/asecurityteam/transportd v1.2.4/go.mod h1:cH+bjiUMIb5PvMnLXKDmj9AhfR8LGVgCELo4+aoWO1k=
 github.com/asecurityteam/transportd v1.3.1 h1:9XaM8qBuinKCf7MGWue6edA2BAYP4zoCH2UwA7MqusA=
 github.com/asecurityteam/transportd v1.3.1/go.mod h1:RUdTrOQ/K13ceY0l69hIvdaU7gRjUSGlkyLvyy7FYHc=
+github.com/asecurityteam/transportd v1.5.0 h1:obYLklbA7NFglg4BdNhPL9x2iY8rbbUggq9X/cnQMaI=
+github.com/asecurityteam/transportd v1.5.0/go.mod h1:KfERPdgfkbeGgeM7V9kVzJ7NCjqaYReiSvGLDlMnLWU=
 github.com/aws/aws-lambda-go v1.22.0/go.mod h1:jJmlefzPfGnckuHdXX7/80O3BvUUi12XOkbv4w9SGLU=
 github.com/aws/aws-lambda-go v1.23.0 h1:Vjwow5COkFJp7GePkk9kjAo/DyX36b7wVPKwseQZbRo=
 github.com/aws/aws-lambda-go v1.23.0/go.mod h1:jJmlefzPfGnckuHdXX7/80O3BvUUi12XOkbv4w9SGLU=
@@ -129,6 +133,8 @@ github.com/getkin/kin-openapi v0.0.0-20190729060947-8785b416cb32/go.mod h1:V1z9x
 github.com/getkin/kin-openapi v0.36.0/go.mod h1:ZJSfy1PxJv2QQvH9EdBj3nupRTVvV42mkW6zKUlRBwk=
 github.com/getkin/kin-openapi v0.49.0 h1:nKSq662fS0kZ11+Wu3FLg3GQGL0UuH1VxF8wV1QuDEU=
 github.com/getkin/kin-openapi v0.49.0/go.mod h1:ZJSfy1PxJv2QQvH9EdBj3nupRTVvV42mkW6zKUlRBwk=
+github.com/getkin/kin-openapi v0.63.0 h1:27zYoKAuHDSquDYRpfmgsDu9TKC5z5G4vlu/XmIdsa8=
+github.com/getkin/kin-openapi v0.63.0/go.mod h1:7Yn5whZr5kJi6t+kShccXS8ae1APpYTW6yheSwk8Yi4=
 github.com/ghodss/yaml v1.0.0 h1:wQHKEahhL6wmXdzwWG11gIVCkOv05bNOh+Rxn0yngAk=
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/gliderlabs/ssh v0.1.1/go.mod h1:U7qILu1NlMHj9FlMhZLlkCdDnU1DBEAqr0aevW3Awn0=
@@ -376,6 +382,7 @@ github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1 h1:EGx4pi6eqNxGa
 github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1/go.mod h1:wJfORRmW1u3UXTncJ5qlYoELFm8eSnnEO6hX4iZ3EWY=
 github.com/gorilla/context v1.1.1/go.mod h1:kBGZzfjB9CEq2AlWe17Uuf7NDRt0dE0s8S51q0aT7Yg=
 github.com/gorilla/mux v1.6.2/go.mod h1:1lud6UwP+6orDFRuTfBEV8e9/aOM/c4fVVCaMa2zaAs=
+github.com/gorilla/mux v1.8.0/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
 github.com/gorilla/pat v0.0.0-20180118222023-199c85a7f6d1/go.mod h1:YeAe0gNeiNT5hoiZRI4yiOky6jVdNvfO2N6Kav/HmxY=
 github.com/gorilla/securecookie v1.1.1 h1:miw7JPhV+b/lAHSXz4qd/nN9jRiAFV5FwjeKyCS8BvQ=
 github.com/gorilla/securecookie v1.1.1/go.mod h1:ra0sb63/xPlUeL+yeDciTfxMRAA+MP+HVt/4epWDjd4=

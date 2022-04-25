@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/asecurityteam/component-httpclient v0.2.0
-	github.com/asecurityteam/component-producer/v2 v2.0.1
+	github.com/asecurityteam/component-producer/v2 v2.1.0
 	github.com/asecurityteam/runhttp v0.4.0
 	github.com/asecurityteam/serverfull v0.5.1
 	github.com/asecurityteam/settings v0.4.0
@@ -24,11 +24,11 @@ require (
 	github.com/asecurityteam/httpstats v0.0.0-20201215174437-106328c66daa // indirect
 	github.com/asecurityteam/logevent v1.5.0 // indirect
 	github.com/asecurityteam/transport v1.6.2 // indirect
-	github.com/asecurityteam/transportd v1.3.1 // indirect
+	github.com/asecurityteam/transportd v1.5.0 // indirect
 	github.com/aws/aws-lambda-go v1.23.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fatih/structs v1.1.0 // indirect
-	github.com/getkin/kin-openapi v0.49.0 // indirect
+	github.com/getkin/kin-openapi v0.63.0 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-chi/chi v4.1.2+incompatible // indirect
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect
