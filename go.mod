@@ -7,7 +7,7 @@ require (
 	github.com/asecurityteam/component-producer/v2 v2.0.1
 	github.com/asecurityteam/runhttp v0.4.0
 	github.com/asecurityteam/serverfull v0.5.1
-	github.com/asecurityteam/settings v0.4.0
+	github.com/asecurityteam/settings v0.6.0
 	github.com/aws/aws-sdk-go v1.38.54
 	github.com/golang/mock v1.5.0
 	github.com/stretchr/testify v1.7.0
