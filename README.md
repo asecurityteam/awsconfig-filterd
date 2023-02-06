@@ -1,4 +1,6 @@
 <a id="markdown-AWS Config Filterd" name="AWS Config Filterd"></a>
+# No longer maintained
+This repository is no longer updated.
 # AWS Config Filterd
 [![GoDoc](https://godoc.org/github.com/asecurityteam/awsconfig-filterd?status.svg)](https://godoc.org/github.com/asecurityteam/awsconfig-filterd)
 [![Build Status](https://travis-ci.com/asecurityteam/awsconfig-filterd.png?branch=master)](https://travis-ci.com/asecurityteam/awsconfig-filterd)
